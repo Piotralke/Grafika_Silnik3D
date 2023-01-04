@@ -10,10 +10,12 @@
 #include "Line.h"
 #include "TriangleStrip.h"
 #include "Cube.h"
+#include "Camera.h"
 class Engine
 {
 private:
 	static Engine* instance;
+	Camera* camera;
 	GLFWwindow* window;
 	GLFWmonitor* monitor;
 	unsigned int screenWidth;
@@ -48,6 +50,7 @@ private:
 public:
 	Engine(unsigned int width, unsigned int height, std::string Title, GLFWmonitor* monitor)
 	{
+		
 		this->instance = this;
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -98,6 +101,7 @@ public:
      	this->screenHeight = height;
 		this->screenWidth = width;
 		this->monitor = monitor;
+		camera = new Camera(width, height,programShader);
 	}
 	void setWindowSize(unsigned int width, unsigned int height);
 	void isFullscreen(bool fullscreen);

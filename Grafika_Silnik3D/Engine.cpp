@@ -1,7 +1,5 @@
 #include "engine.h"
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 0.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 Engine* Engine::instance = NULL;
 void Engine::init()
 {
@@ -23,13 +21,13 @@ void Engine::processInput()
 		isFullscreen(false);
 	float cameraSpeed = static_cast<float>(2.5 * deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		cameraPos += cameraSpeed * cameraFront;
+		camera->VerticalMove(true, cameraSpeed);
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		cameraPos -= cameraSpeed * cameraFront;
+		camera->VerticalMove(false, cameraSpeed);
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+		camera->HorizontalMove(false, cameraSpeed);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+		camera->HorizontalMove(true, cameraSpeed);
 }
 void Engine::setWindowSize(unsigned int width, unsigned int height)
 {
@@ -104,7 +102,7 @@ void Engine::mainLoop()
     TriangleStrip triangleStrip(vertices5,sizeof(vertices5)/sizeof(float));
 	Cube cube(vertices6);
 	//glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
-	//glUniformMatrix4fv(glGetUniformLocation(programShader, "projection"), 1, GL_FALSE, &projection[0][0]);
+	
     while (!glfwWindowShouldClose(getWindow()))
     {
 		float currentFrame = static_cast<float>(glfwGetTime());
@@ -114,25 +112,25 @@ void Engine::mainLoop()
         glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(programShader);
-
-		glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-		glm::mat4 view = glm::mat4(1.0f);
-		glm::mat4 projection = glm::mat4(1.0f);
-		model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-		projection = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
-		// retrieve the matrix uniform locations
-		unsigned int modelLoc = glGetUniformLocation(programShader, "model");
-		unsigned int viewLoc = glGetUniformLocation(programShader, "view");
-		// pass them to the shaders (3 different ways)
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model[0][0]);
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-		glUniformMatrix4fv(glGetUniformLocation(programShader, "projection"), 1, GL_FALSE, &projection[0][0]);
-
+		
+		//glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+		//glm::mat4 view = glm::mat4(1.0f);
+		//glm::mat4 projection = glm::mat4(1.0f);
+		//model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
+		//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+		//projection = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
+		//// retrieve the matrix uniform locations
+		//unsigned int modelLoc = glGetUniformLocation(programShader, "model");
+		//unsigned int viewLoc = glGetUniformLocation(programShader, "view");
+		//// pass them to the shaders (3 different ways)
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model[0][0]);
+		//glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+		//glUniformMatrix4fv(glGetUniformLocation(programShader, "projection"), 1, GL_FALSE, &projection[0][0]);
 
         //triangle.draw();
         //point.draw();
         //rectangle.draw();
+		camera->UpdateCamera(programShader);
         //line.draw();
 		//glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 		//glUniformMatrix4fv(glGetUniformLocation(programShader, "view"), 1, GL_FALSE, &view[0][0]);
