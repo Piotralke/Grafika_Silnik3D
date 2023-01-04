@@ -146,3 +146,9 @@ void Engine::mainLoop()
     glDeleteProgram(programShader);
     glfwTerminate();
 }
+
+void MouseCallback(GLFWwindow* window, double xpos, double ypos)
+{
+	Engine* eng = Engine::getInstance();
+	eng->getCamera()->UpdateMouse(xpos, ypos);
+}

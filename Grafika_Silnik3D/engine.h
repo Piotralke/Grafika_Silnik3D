@@ -1,7 +1,6 @@
 #pragma once
 #ifndef engine_h
 #define engine_h
-#include "glm/gtc/matrix_transform.hpp"
 #include <string>
 #include <iostream>
 #include "Point3D.h"
@@ -11,11 +10,12 @@
 #include "TriangleStrip.h"
 #include "Cube.h"
 #include "Camera.h"
+void MouseCallback(GLFWwindow* window, double xpos, double ypos);
 class Engine
 {
 private:
-	static Engine* instance;
 	Camera* camera;
+	static Engine* instance;
 	GLFWwindow* window;
 	GLFWmonitor* monitor;
 	unsigned int screenWidth;
@@ -101,7 +101,8 @@ public:
      	this->screenHeight = height;
 		this->screenWidth = width;
 		this->monitor = monitor;
-		camera = new Camera(width, height,programShader);
+		camera = new Camera(width, height,programShader, window);
+		glfwSetCursorPosCallback(window, MouseCallback);
 	}
 	void setWindowSize(unsigned int width, unsigned int height);
 	void isFullscreen(bool fullscreen);
@@ -112,6 +113,10 @@ public:
 	static Engine* getInstance()
 	{
 		return instance;
+	}
+	Camera* getCamera()
+	{
+		return camera;
 	}
 	GLFWwindow* getWindow();
 };
