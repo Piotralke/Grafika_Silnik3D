@@ -5,9 +5,7 @@ void Camera::UpdateCamera(unsigned int programShader)
     view = glm::mat4(1.0f);
     view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
     glUniformMatrix4fv(glGetUniformLocation(programShader, "view"), 1, GL_FALSE, &view[0][0]);
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-    glUniformMatrix4fv(glGetUniformLocation(programShader, "model"), 1, GL_FALSE, &model[0][0]);
+
 }
 void Camera::VerticalMove(bool isUp, float cameraSpeed)
 {
@@ -60,3 +58,16 @@ void Camera::UpdateMouse(double xPos, double yPos)
 	cameraFront = glm::normalize(front);
 }
 
+glm::mat4 Camera::getView()
+{
+	return view;
+}
+
+glm::vec3 Camera::getCameraFront()
+{
+	return cameraFront;
+}
+glm::vec3 Camera::getCameraPos()
+{
+	return cameraPos;
+}

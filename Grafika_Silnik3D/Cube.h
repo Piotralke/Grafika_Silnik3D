@@ -2,20 +2,39 @@
 #ifndef cube_h
 #define cube_h
 #include "glad/glad.h"
-//#include "glm/glm.hpp"
+#include "glm/glm.hpp"
 #include "GLFW/glfw3.h"
-
+#include <glm/ext/matrix_transform.hpp>
 class Cube
 {
-private:
-	float vertices[48];
+protected:
+	float vertices[48] = {
+		0.5f, 0.5f, 0.5f,       0.0f,0.0f,0.0f,//1 
+		-0.5f, 0.5f, 0.5f,	    0.0f,0.0f,0.0f,//2
+		-0.5f, 0.5f, -0.5f,	    0.0f,0.0f,0.0f,//3
+		0.5f,0.5f,-0.5f,	    0.0f,0.0f,0.0f,//4
+		0.5f, -0.5f, 0.5f,	    0.0f,0.0f,0.0f,//5
+		-0.5f, -0.5f, 0.5f,	    0.0f,0.0f,0.0f,//6
+		-0.5f, -0.5f, -0.5f,	0.0f,0.0f,0.0f,//7
+		0.5f,-0.5f,-0.5f,	    0.0f,0.0f,0.0f//8
+	};
 	unsigned int VBO, VAO, EBO;
+	glm::vec3 position;
+	glm::vec3 scalingFactor;
+	float rotationAngleX=0;
+	float rotationAngleY=0;
+	float rotationAngleZ=0;
 public:
-	Cube(float vertices[])
+	Cube(glm::vec3 point, glm::vec3 color)
 	{
-		for (int i = 0; i < 48; i++)
+		scalingFactor = glm::vec3(1.0, 1.0, 1.0);
+		position = point;
+		for (int i = 3; i < 49; i=i+6)
 		{
-			this->vertices[i] = vertices[i];
+			for (int j = 0; j < 3; j++)
+			{
+				vertices[i + j] = color[j];
+			}
 		}
 		glGenVertexArrays(1, &VAO);
 		glGenBuffers(1, &VBO);
@@ -53,9 +72,15 @@ public:
 		glBindVertexArray(0);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}
-	void draw();
+	void draw(unsigned int programShader);
 	void setVertices(float vertices[]);
 	float* getVertices();
+	void translate(glm::vec3 translation);
+	void rotateX(float angle);
+	void rotateY(float angle);
+	void rotateZ(float angle);
+	void scale(float k);
+	
 };
 
-#endif // !rectangle_h
+#endif // !cube_h

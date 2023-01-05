@@ -10,7 +10,9 @@
 #include "TriangleStrip.h"
 #include "Cube.h"
 #include "Camera.h"
+#include "Bullet.h"
 void MouseCallback(GLFWwindow* window, double xpos, double ypos);
+void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 class Engine
 {
 private:
@@ -24,6 +26,8 @@ private:
 	float lastFrame;
 	glm::mat4 projection;
 	glm::vec4 backgroundColor = glm::vec4(0.0f,0.0f,1.0f,0.1f);
+	std::vector<Cube> cubesVector;
+
 	const char *vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
 		"layout (location = 1) in vec3 color;\n"
@@ -48,6 +52,7 @@ private:
 	unsigned int programShader;
 	unsigned int VBO, VAO;
 public:
+	std::vector<Bullet> bulletsVector;
 	Engine(unsigned int width, unsigned int height, std::string Title, GLFWmonitor* monitor)
 	{
 		
@@ -97,12 +102,14 @@ public:
 		}
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
-
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
      	this->screenHeight = height;
 		this->screenWidth = width;
 		this->monitor = monitor;
 		camera = new Camera(width, height,programShader, window);
+		glfwSetMouseButtonCallback(window, MouseButtonCallback);
 		glfwSetCursorPosCallback(window, MouseCallback);
+		
 	}
 	void setWindowSize(unsigned int width, unsigned int height);
 	void isFullscreen(bool fullscreen);

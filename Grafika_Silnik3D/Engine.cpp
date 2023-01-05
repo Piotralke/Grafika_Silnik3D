@@ -85,23 +85,40 @@ void Engine::mainLoop()
     };
 	float vertices6[] = { 
 		0.5f, 0.5f, 0.5f,       1.0f,0.0f,0.0f,//1 
-		-0.5f, 0.5f, 0.5f,	    1.0f,1.0f,0.0f,//2
-		-0.5f, 0.5f, -0.5f,	    0.0f,1.0f,0.0f,//3
-		0.5f,0.5f,-0.5f,	    1.0f,1.0f,0.0f,//4
+		-0.5f, 0.5f, 0.5f,	    1.0f,0.0f,0.0f,//2
+		-0.5f, 0.5f, -0.5f,	    1.0f,0.0f,0.0f,//3
+		0.5f,0.5f,-0.5f,	    1.0f,0.0f,0.0f,//4
 		0.5f, -0.5f, 0.5f,	    1.0f,0.0f,0.0f,//5
-		-0.5f, -0.5f, 0.5f,	    1.0f,1.0f,0.0f,//6
-		-0.5f, -0.5f, -0.5f,	0.0f,1.0f,0.0f,//7
-		0.5f,-0.5f,-0.5f,	    1.0f,1.0f,0.0f//8
+		-0.5f, -0.5f, 0.5f,	    1.0f,0.0f,0.0f,//6
+		-0.5f, -0.5f, -0.5f,	1.0f,0.0f,0.0f,//7
+		0.5f,-0.5f,-0.5f,	    1.0f,0.0f,0.0f//8
 
 
 	};
+	glm::vec3 red(1.0f, 0.0f, 0.0f);
+	glm::vec3 blue(0.0f, 0.0f, 1.0f);
+	glm::vec3 green(0.0f, 1.0f, 0.0f);
+	glm::vec3 yellow(1.0f, 1.0f, 0.0f);
+	glm::vec3 pos(1.5f, 2.0f, -1.0f);
+	glm::vec3 pos2(0.0f, 2.0f, -1.0f);
+	glm::vec3 pos3(-1.5f, 2.0f, -1.0f);
+	glm::vec3 pos4(-1.5f, -10.0f, -1.0f);
+	
     Point3D point(vertices2);
     Triangle triangle(vertices);
 	Rectangle rectangle(vertices3);
     Line line(vertices4);
     TriangleStrip triangleStrip(vertices5,sizeof(vertices5)/sizeof(float));
-	Cube cube(vertices6);
-	//glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
+	Cube cube(pos,red);
+	Cube cube2(pos2,yellow);
+	Cube cube3(pos3,green);
+	Cube asd(pos4, blue);
+	asd.scale(15.0);
+	cubesVector.push_back(asd);
+	cubesVector.push_back(cube);
+	cubesVector.push_back(cube2);
+	cubesVector.push_back(cube3);
+	
 	
     while (!glfwWindowShouldClose(getWindow()))
     {
@@ -112,7 +129,6 @@ void Engine::mainLoop()
         glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(programShader);
-		
 		//glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 		//glm::mat4 view = glm::mat4(1.0f);
 		//glm::mat4 projection = glm::mat4(1.0f);
@@ -137,7 +153,16 @@ void Engine::mainLoop()
 		//glm::mat4 model = glm::mat4(1.0f);
 		//glUniformMatrix4fv(glGetUniformLocation(programShader, "model"), 1, GL_FALSE, &model[0][0]);
 		//triangleStrip.draw();
-		cube.draw();
+		for (int i = 0; i < cubesVector.size(); i++)
+		{
+			cubesVector[i].draw(programShader);
+		}
+		for (int i = 0; i < bulletsVector.size(); i++)
+		{
+			bulletsVector[i].move();
+			bulletsVector[i].rotateZ(0.005);
+			bulletsVector[i].draw(programShader);
+		}
 		glfwSwapBuffers(getWindow());
         glfwPollEvents();
     }
@@ -151,4 +176,19 @@ void MouseCallback(GLFWwindow* window, double xpos, double ypos)
 {
 	Engine* eng = Engine::getInstance();
 	eng->getCamera()->UpdateMouse(xpos, ypos);
+}
+
+void MouseButtonCallback(GLFWwindow* window,int button, int action, int mods)
+{
+	Engine* eng = Engine::getInstance();
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+	{
+		
+		
+		glm::vec3 view = eng->getCamera()->getCameraPos();
+		glm::vec3 direction = view + eng->getCamera()->getCameraFront();
+		std::cout << "X: " << direction.x << "Y: " << direction.y << "Z: " << direction.z << std::endl;
+		Bullet bullet(view, glm::vec3(1.0, 1.0, 1.0),glm::vec3(direction.x/100.0, direction.y / 100.0, direction.z / 100.0));
+		eng->bulletsVector.push_back(bullet);
+	}
 }

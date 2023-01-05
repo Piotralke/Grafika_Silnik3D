@@ -38,7 +38,9 @@ public:
 	void VerticalMove(bool isUp, float cameraSpeed);
 	void HorizontalMove(bool isRight, float cameraSpeed);
 	void UpdateMouse(double xpos, double ypos);
-
+	glm::mat4 getView();
+	glm::vec3 getCameraFront();
+	glm::vec3 getCameraPos();
 };
 
 #endif // !camera_h

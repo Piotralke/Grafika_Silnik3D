@@ -16,7 +16,7 @@ float lastFrame = 0.0f;
 
 int main()
 {
-    Engine engine(800,600,"Silnik3D",NULL);
+    Engine engine(1024,576,"Silnik3D",NULL);
 
     glfwSetFramebufferSizeCallback(engine.getWindow(), framebuffer_size_callback);
     engine.setBackgroundColor(0, 0, 0, 10);
