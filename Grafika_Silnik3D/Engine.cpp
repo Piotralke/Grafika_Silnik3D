@@ -166,10 +166,15 @@ void Engine::mainLoop()
 			bulletsVector[i].rotateX(0.5);
 			bulletsVector[i].rotateY(0.5);
 			bulletsVector[i].draw(programShader);
-			if (checkCollision(cube, bulletsVector[i]))
+			for (int j = 0; j < cubesVector.size(); j++)
 			{
-				bulletsVector.erase(bulletsVector.begin()+i);
+				if (checkCollision(cubesVector[j], bulletsVector[i]))
+				{
+					bulletsVector.erase(bulletsVector.begin() + i);
+					break;
+				}
 			}
+			
 		}
 		glfwSwapBuffers(getWindow());
         glfwPollEvents();
