@@ -5,14 +5,15 @@
 class Bullet: public Cube
 {
 private: 
-	glm::vec3 translation;
+	
 public:
 	Bullet(glm::vec3 point, glm::vec3 color,glm::vec3 translation):Cube(point,color)
 	{
 		this->scale(0.1);
-		translation = translation;
+		this->translation = translation;
 	}
-	void move();
+	void move(float deltaTime);
+	glm::vec3 translation;
 };
 
 

@@ -3,16 +3,18 @@
 #define engine_h
 #include <string>
 #include <iostream>
+#include "Bullet.h"
 #include "Point3D.h"
 #include "Triangle.h"
 #include "Rectangle.h"
 #include "Line.h"
 #include "TriangleStrip.h"
-#include "Cube.h"
 #include "Camera.h"
-#include "Bullet.h"
+
+
 void MouseCallback(GLFWwindow* window, double xpos, double ypos);
 void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+bool checkCollision(Cube ob1, Cube ob2);
 class Engine
 {
 private:
@@ -27,7 +29,6 @@ private:
 	glm::mat4 projection;
 	glm::vec4 backgroundColor = glm::vec4(0.0f,0.0f,1.0f,0.1f);
 	std::vector<Cube> cubesVector;
-
 	const char *vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
 		"layout (location = 1) in vec3 color;\n"

@@ -1,7 +1,7 @@
 #pragma once
 #include "Bullet.h"
 
-void Bullet::move()
+void Bullet::move(float deltaTime)
 {
-	position += translation;
+	position += translation * deltaTime * 10.0f;
 }

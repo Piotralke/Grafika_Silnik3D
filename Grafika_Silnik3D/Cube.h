@@ -80,6 +80,11 @@ public:
 	void rotateY(float angle);
 	void rotateZ(float angle);
 	void scale(float k);
+	glm::vec3 getPosition();
+	glm::vec3 getScalingFactor();
+	float getRotX();
+	float getRotY();
+	float getRotZ();
 	
 };
 

@@ -45,3 +45,23 @@ void Cube::scale(float k)
 	glm::vec3 factor(k, k, k);
 	scalingFactor *= factor;
 }
+glm::vec3 Cube::getPosition()
+{
+	return position;
+}
+glm::vec3 Cube::getScalingFactor()
+{
+	return scalingFactor;
+}
+float Cube::getRotX()
+{
+	return rotationAngleX;
+}
+float Cube::getRotY()
+{
+	return rotationAngleY;
+}
+float Cube::getRotZ()
+{
+	return rotationAngleZ;
+}

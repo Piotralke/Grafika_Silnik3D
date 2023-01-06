@@ -65,7 +65,7 @@ void Engine::mainLoop()
         -0.5f,  0.5f, 0.0f,  // top left    
     };
     float vertices2[] = {
-        0.5f, 0.5f, 0.0f, // left     
+        2.0f, 3.5f, -3.0f, // left     
     };
     float vertices3[] = {
 		0.7f,  0.5f, 0.0f,  // top right
@@ -112,14 +112,15 @@ void Engine::mainLoop()
 	Cube cube(pos,red);
 	Cube cube2(pos2,yellow);
 	Cube cube3(pos3,green);
+	Cube cube4(pos3,yellow);
 	Cube asd(pos4, blue);
 	asd.scale(15.0);
 	cubesVector.push_back(asd);
 	cubesVector.push_back(cube);
 	cubesVector.push_back(cube2);
 	cubesVector.push_back(cube3);
-	
-	
+	cubesVector.push_back(cube4);
+
     while (!glfwWindowShouldClose(getWindow()))
     {
 		float currentFrame = static_cast<float>(glfwGetTime());
@@ -146,6 +147,7 @@ void Engine::mainLoop()
         //triangle.draw();
         //point.draw();
         //rectangle.draw();
+		point.draw();
 		camera->UpdateCamera(programShader);
         //line.draw();
 		//glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
@@ -159,9 +161,15 @@ void Engine::mainLoop()
 		}
 		for (int i = 0; i < bulletsVector.size(); i++)
 		{
-			bulletsVector[i].move();
-			bulletsVector[i].rotateZ(0.005);
+			bulletsVector[i].move(deltaTime);
+			bulletsVector[i].rotateZ(0.5);
+			bulletsVector[i].rotateX(0.5);
+			bulletsVector[i].rotateY(0.5);
 			bulletsVector[i].draw(programShader);
+			if (checkCollision(cube, bulletsVector[i]))
+			{
+				bulletsVector.erase(bulletsVector.begin()+i);
+			}
 		}
 		glfwSwapBuffers(getWindow());
         glfwPollEvents();
@@ -183,12 +191,26 @@ void MouseButtonCallback(GLFWwindow* window,int button, int action, int mods)
 	Engine* eng = Engine::getInstance();
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 	{
-		
-		
 		glm::vec3 view = eng->getCamera()->getCameraPos();
-		glm::vec3 direction = view + eng->getCamera()->getCameraFront();
-		std::cout << "X: " << direction.x << "Y: " << direction.y << "Z: " << direction.z << std::endl;
-		Bullet bullet(view, glm::vec3(1.0, 1.0, 1.0),glm::vec3(direction.x/100.0, direction.y / 100.0, direction.z / 100.0));
+		glm::vec3 direction =glm::normalize(eng->getCamera()->getCameraFront() );
+		//std::cout << "X: " << direction.x << "Y: " << direction.y << "Z: " << direction.z << std::endl;
+		Bullet bullet(view, glm::vec3(1.0, 1.0, 1.0), direction);
 		eng->bulletsVector.push_back(bullet);
 	}
+
+	//
+}
+
+bool checkCollision(Cube ob1, Cube ob2)
+{
+	// collision x-axis
+	bool collisionX = ob1.getPosition().x + 0.5 * ob1.getScalingFactor().x >= ob2.getPosition().x &&
+		ob2.getPosition().x + 0.5 * ob1.getScalingFactor().x >= ob1.getPosition().x;
+	// collision y-axis
+	bool collisionY = ob1.getPosition().y +0.5*ob1.getScalingFactor().y >= ob2.getPosition().y &&
+		ob2.getPosition().y + 0.5 * ob1.getScalingFactor().y >= ob1.getPosition().y;
+	// collision z-axis
+	bool collisionZ = ob1.getPosition().z + 0.5 * ob1.getScalingFactor().z >= ob2.getPosition().z &&
+		ob2.getPosition().z + 0.5 * ob1.getScalingFactor().z >= ob1.getPosition().z;
+	return collisionX && collisionY && collisionZ;
 }
