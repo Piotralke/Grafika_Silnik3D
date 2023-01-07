@@ -3,5 +3,5 @@
 
 void Bullet::move(float deltaTime)
 {
-	position += translation * deltaTime * 10.0f;
+	position += translation * deltaTime * 33.0f;
 }

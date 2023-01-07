@@ -82,6 +82,7 @@ public:
 	void scale(float k);
 	glm::vec3 getPosition();
 	glm::vec3 getScalingFactor();
+	void setPosition(glm::vec3 position);
 	float getRotX();
 	float getRotY();
 	float getRotZ();

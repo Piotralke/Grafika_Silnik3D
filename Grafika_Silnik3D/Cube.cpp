@@ -28,6 +28,10 @@ void Cube::translate(glm::vec3 translation)
 {
 	position += translation;
 }
+void Cube::setPosition(glm::vec3 position)
+{
+	this->position = position;
+}
 void Cube::rotateX(float angle)
 {
 	rotationAngleX += angle;

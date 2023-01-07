@@ -68,10 +68,10 @@ void Engine::mainLoop()
         2.0f, 3.5f, -3.0f, // left     
     };
     float vertices3[] = {
-		0.7f,  0.5f, 0.0f,  // top right
-		 0.5f, -0.5f, 0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,  // bottom left
-		-0.5f,  0.8f, 0.0f   // top left     
+		0.1f,  0.1f, 0.0f,  // top right
+		 0.1f, -0.1f, 0.0f,  // bottom right
+		-0.1f, -0.1f, 0.0f,  // bottom left
+		-0.1f,  0.1f, 0.0f   // top left     
     };
     float vertices4[] = {
 		0.7f,  0.5f, 0.0f,  // top right
@@ -99,28 +99,29 @@ void Engine::mainLoop()
 	glm::vec3 blue(0.0f, 0.0f, 1.0f);
 	glm::vec3 green(0.0f, 1.0f, 0.0f);
 	glm::vec3 yellow(1.0f, 1.0f, 0.0f);
+	glm::vec3 gray(175.0f/256.0f, 175.0f / 256.0f, 175.0f / 256.0f);
+	glm::vec3 darkGray(125.0f/256.0f, 125.0f / 256.0f, 125.0f / 256.0f);
+	glm::vec3 orange(1.0f, 160.0f / 256.0f, 20.0f / 256.0f);
 	glm::vec3 pos(1.5f, 2.0f, -1.0f);
 	glm::vec3 pos2(0.0f, 2.0f, -1.0f);
 	glm::vec3 pos3(-1.5f, 2.0f, -1.0f);
-	glm::vec3 pos4(-1.5f, -10.0f, -1.0f);
-	
+	glm::vec3 pos4(-1.5f, -20.0f, -1.0f);
+	glm::vec3 pos5(-1.5f, 10.0f, -30.0f);
+	Cube aim(pos, red);
     Point3D point(vertices2);
     Triangle triangle(vertices);
 	Rectangle rectangle(vertices3);
     Line line(vertices4);
     TriangleStrip triangleStrip(vertices5,sizeof(vertices5)/sizeof(float));
-	Cube cube(pos,red);
-	Cube cube2(pos2,yellow);
-	Cube cube3(pos3,green);
-	Cube cube4(pos3,yellow);
-	Cube asd(pos4, blue);
-	asd.scale(15.0);
+	Cube wall(pos5,darkGray);
+	Cube asd(pos4, gray);
+	asd.scale(30.0);
+	wall.scale(30.0);
 	cubesVector.push_back(asd);
-	cubesVector.push_back(cube);
-	cubesVector.push_back(cube2);
-	cubesVector.push_back(cube3);
-	cubesVector.push_back(cube4);
-
+	aim.scale(0.002);
+	cubesVector.push_back(wall);
+	float respawnTimer = 1.2f;
+	float time = 0.0f;
     while (!glfwWindowShouldClose(getWindow()))
     {
 		float currentFrame = static_cast<float>(glfwGetTime());
@@ -130,37 +131,28 @@ void Engine::mainLoop()
         glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(programShader);
-		//glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-		//glm::mat4 view = glm::mat4(1.0f);
-		//glm::mat4 projection = glm::mat4(1.0f);
-		//model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
-		//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-		//projection = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
-		//// retrieve the matrix uniform locations
-		//unsigned int modelLoc = glGetUniformLocation(programShader, "model");
-		//unsigned int viewLoc = glGetUniformLocation(programShader, "view");
-		//// pass them to the shaders (3 different ways)
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model[0][0]);
-		//glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-		//glUniformMatrix4fv(glGetUniformLocation(programShader, "projection"), 1, GL_FALSE, &projection[0][0]);
+		time += deltaTime;
+		if (time>=respawnTimer)
+		{
+			generateCube();
+			time = time - respawnTimer;
+		}
+		
 
-        //triangle.draw();
-        //point.draw();
-        //rectangle.draw();
-		point.draw();
+		aim.setPosition(camera->getCameraPos()+camera->getCameraFront());
+		aim.draw(programShader);
 		camera->UpdateCamera(programShader);
-        //line.draw();
-		//glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-		//glUniformMatrix4fv(glGetUniformLocation(programShader, "view"), 1, GL_FALSE, &view[0][0]);
-		//glm::mat4 model = glm::mat4(1.0f);
-		//glUniformMatrix4fv(glGetUniformLocation(programShader, "model"), 1, GL_FALSE, &model[0][0]);
-		//triangleStrip.draw();
 		for (int i = 0; i < cubesVector.size(); i++)
 		{
 			cubesVector[i].draw(programShader);
 		}
+		for (int i = 0; i < targetVector.size(); i++)
+		{
+			targetVector[i].draw(programShader);
+		}
 		for (int i = 0; i < bulletsVector.size(); i++)
 		{
+			bool deleted = false;
 			bulletsVector[i].move(deltaTime);
 			bulletsVector[i].rotateZ(0.5);
 			bulletsVector[i].rotateX(0.5);
@@ -170,7 +162,21 @@ void Engine::mainLoop()
 			{
 				if (checkCollision(cubesVector[j], bulletsVector[i]))
 				{
+					std::cout << "X: " << bulletsVector[i].getPosition().x << " Y: " << bulletsVector[i].getPosition().y << " Z: " << bulletsVector[i].getPosition().z << std::endl;
 					bulletsVector.erase(bulletsVector.begin() + i);
+					deleted = true;
+					break;
+				}
+			}
+			if (deleted)
+				break;
+			for (int j = 0; j < targetVector.size(); j++)
+			{
+				if (checkCollision(targetVector[j], bulletsVector[i]))
+				{
+					std::cout << "X: " << bulletsVector[i].getPosition().x << " Y: " << bulletsVector[i].getPosition().y << " Z: " << bulletsVector[i].getPosition().z << std::endl;
+					bulletsVector.erase(bulletsVector.begin() + i);
+					targetVector.erase(targetVector.begin() + j);
 					break;
 				}
 			}
@@ -218,4 +224,13 @@ bool checkCollision(Cube ob1, Cube ob2)
 	bool collisionZ = ob1.getPosition().z + 0.5 * ob1.getScalingFactor().z >= ob2.getPosition().z &&
 		ob2.getPosition().z + 0.5 * ob1.getScalingFactor().z >= ob1.getPosition().z;
 	return collisionX && collisionY && collisionZ;
+}
+void Engine::generateCube()
+{
+	srand(time(NULL));
+	float x = rand() % 18 - 10.0;
+	float y = rand() % 10 - 4;
+	float z = -13.0f;
+	Cube newCube(glm::vec3(x, y, z), glm::vec3(1.0f, 160.0f / 256.0f, 20.0f / 256.0f));
+	targetVector.push_back(newCube);
 }
