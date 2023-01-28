@@ -1,0 +1,44 @@
+\hypertarget{_triangle_8h_source}{}\doxysection{Triangle.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef triangle\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define triangle\_h}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}glad/glad.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}glm/glm.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GLFW/glfw3.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_triangle}{Triangle}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14 \textcolor{keyword}{private}:}
+\DoxyCodeLine{15     \textcolor{keywordtype}{float} vertices[9];}
+\DoxyCodeLine{16     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} VBO, VAO;}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_triangle_a7431188579a9f952f52547faaa587627}{Triangle}}(\textcolor{keywordtype}{float} vertices[])}
+\DoxyCodeLine{24     \{}
+\DoxyCodeLine{25         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < 9; i++)}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             this-\/>vertices[i] = vertices[i];}
+\DoxyCodeLine{28         \}}
+\DoxyCodeLine{29         glGenVertexArrays(1, \&VAO);}
+\DoxyCodeLine{30         glGenBuffers(1, \&VBO);}
+\DoxyCodeLine{31         glBindVertexArray(VAO);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         glBindBuffer(GL\_ARRAY\_BUFFER, VBO);}
+\DoxyCodeLine{34         glBufferData(GL\_ARRAY\_BUFFER, \textcolor{keyword}{sizeof}(this-\/>vertices), this-\/>vertices, GL\_STATIC\_DRAW);}
+\DoxyCodeLine{35         }
+\DoxyCodeLine{36         glVertexAttribPointer(0, 3, GL\_FLOAT, GL\_FALSE, 3 * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{37         glEnableVertexAttribArray(0);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         glBindBuffer(GL\_ARRAY\_BUFFER, 0);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         glBindVertexArray(0);}
+\DoxyCodeLine{42     \}}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_triangle_a43067ba4ee3c1d56930a567cc2186624}{draw}}();}
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_triangle_aae106741e032ca19b86ece675cfba277}{setVertices}}(\textcolor{keywordtype}{float} vertices[]);}
+\DoxyCodeLine{59     \textcolor{keywordtype}{float}* \mbox{\hyperlink{class_triangle_aa35e2ede013621a61823aed73493a4b5}{getVertices}}();}
+\DoxyCodeLine{60 \};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !triangle\_h}}
+
+\end{DoxyCode}

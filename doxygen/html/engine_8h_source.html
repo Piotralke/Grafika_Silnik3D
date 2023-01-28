@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Grafika Silnik 3D: Plik źródłowy engine.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Grafika Silnik 3D
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">engine.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef engine_h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define engine_h</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Bullet.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Point3D.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Triangle.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Rectangle.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Line.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;TriangleStrip.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Camera.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;BitmapHandler.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">void</span> MouseCallback(GLFWwindow* window, <span class="keywordtype">double</span> xpos, <span class="keywordtype">double</span> ypos);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">void</span> MouseButtonCallback(GLFWwindow* window, <span class="keywordtype">int</span> button, <span class="keywordtype">int</span> action, <span class="keywordtype">int</span> mods);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">bool</span> checkCollision(<a class="code hl_class" href="class_cube.html">Cube</a> ob1, <a class="code hl_class" href="class_cube.html">Cube</a> ob2);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_engine.html">   45</a></span><span class="keyword">class </span><a class="code hl_class" href="class_engine.html">Engine</a></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_class" href="class_camera.html">Camera</a>* camera;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_class" href="class_bitmap_handler.html">BitmapHandler</a>* bitmapHandler;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">static</span> <a class="code hl_class" href="class_engine.html">Engine</a>* instance;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    GLFWwindow* window;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    GLFWmonitor* monitor;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">/*&lt;! Szerokość ekranu*/</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> screenWidth;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> screenHeight;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">float</span> deltaTime;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">/*&lt;!Czas ostatniej klatki*/</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">float</span> lastFrame;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    glm::mat4 projection;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    glm::vec4 backgroundColor = glm::vec4(0.0f,0.0f,1.0f,0.1f);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    std::vector&lt;Cube&gt; cubesVector;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    std::vector&lt;Cube&gt; targetVector;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *vertexShaderSource = <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="stringliteral">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="stringliteral">&quot;layout (location = 1) in vec2 aTexCoord;\n&quot;</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="stringliteral">&quot;out vec2 TexCoord;\n&quot;</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="stringliteral">&quot;uniform mat4 model;\n&quot;</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="stringliteral">&quot;uniform mat4 view;\n&quot;</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="stringliteral">&quot;uniform mat4 projection;\n&quot;</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="stringliteral">&quot;   gl_Position = projection*view*model*vec4(aPos.x, aPos.y, aPos.z, 1.0);\n&quot;</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="stringliteral">&quot;TexCoord = vec2(aTexCoord.x, aTexCoord.y);\n&quot;</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *fragmentShaderSource =<span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="stringliteral">&quot;out vec4 FragColor;\n&quot;</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="stringliteral">&quot;in vec2 TexCoord;\n&quot;</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="stringliteral">&quot;uniform sampler2D texture1;\n&quot;</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="stringliteral">&quot;  FragColor = texture(texture1, TexCoord);\n&quot;</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* vertexLightningShaderSource = <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="stringliteral">&quot;layout(location = 0) in vec3 aPos;&quot;</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="stringliteral">&quot;layout(location = 1) in vec3 aNormal;\n&quot;</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="stringliteral">&quot;layout(location = 2) in vec2 aTexCoords;\n&quot;</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="stringliteral">&quot;out vec3 FragPos;\n&quot;</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="stringliteral">&quot;out vec2 TexCoords;\n&quot;</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="stringliteral">&quot;out vec3 Normal;\n&quot;</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="stringliteral">&quot;uniform mat4 model;\n&quot;</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="stringliteral">&quot;uniform mat4 view;\n&quot;</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="stringliteral">&quot;uniform mat4 projection;\n&quot;</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="stringliteral">&quot;FragPos = vec3(model * vec4(aPos, 1.0));\n&quot;</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="stringliteral">&quot;Normal = mat3(transpose(inverse(model))) * aNormal;\n&quot;</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="stringliteral">&quot;TexCoords = aTexCoords;\n&quot;</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="stringliteral">&quot;gl_Position = projection * view * vec4(FragPos, 1.0);\n&quot;</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* fragmentLightningShaderSource = <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="stringliteral">&quot;out vec4 FragColor;\n&quot;</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="stringliteral">&quot;struct Material {\n&quot;</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="stringliteral">&quot;sampler2D diffuse;\n&quot;</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="stringliteral">&quot;vec3 specular;\n&quot;</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="stringliteral">&quot;float shininess;\n&quot;</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="stringliteral">&quot;};\n&quot;</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="stringliteral">&quot;struct Light {\n&quot;</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="stringliteral">&quot;vec3 position;\n&quot;</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="stringliteral">&quot;vec3 ambient;\n&quot;</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="stringliteral">&quot;vec3 diffuse;\n&quot;</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="stringliteral">&quot;vec3 specular;\n&quot;</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="stringliteral">&quot;};\n&quot;</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="stringliteral">&quot;in vec3 FragPos;\n&quot;</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="stringliteral">&quot;in vec3 Normal;\n&quot;</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="stringliteral">&quot;in vec2 TexCoords;\n&quot;</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="stringliteral">&quot;uniform vec3 viewPos;\n&quot;</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="stringliteral">&quot;uniform Material material;\n&quot;</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="stringliteral">&quot;uniform Light light;\n&quot;</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="stringliteral">&quot;vec3 ambient = light.ambient * texture(material.diffuse, TexCoords).rgb;\n&quot;</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="stringliteral">&quot;vec3 norm = normalize(Normal);\n&quot;</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="stringliteral">&quot;vec3 lightDir = normalize(light.position - FragPos);\n&quot;</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="stringliteral">&quot;float diff = max(dot(norm, lightDir), 0.0);\n&quot;</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="stringliteral">&quot;vec3 diffuse = light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;\n&quot;</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="stringliteral">&quot;vec3 viewDir = normalize(viewPos - FragPos);\n&quot;</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="stringliteral">&quot;vec3 reflectDir = reflect(-lightDir, norm);\n&quot;</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="stringliteral">&quot;float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess); \n&quot;</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="stringliteral">&quot;vec3 specular = light.specular * (spec * material.specular); \n&quot;</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="stringliteral">&quot;vec3 result = ambient + diffuse + specular;\n&quot;</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="stringliteral">&quot;FragColor = vec4(result, 1.0);\n&quot;</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vertexShader;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> fragmentShader;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> programShader2;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> VBO, VAO;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vertexLightningShader;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> fragmentLightningShader;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="class_engine.html#ac20051580358250b61d636b639530d8c">  164</a></span>    std::vector&lt;Bullet&gt; <a class="code hl_variable" href="class_engine.html#ac20051580358250b61d636b639530d8c">bulletsVector</a>;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="class_engine.html#a7d8a59a55144db95f88e0582d88ec064">  173</a></span>    <a class="code hl_function" href="class_engine.html#a7d8a59a55144db95f88e0582d88ec064">Engine</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height, std::string Title, GLFWmonitor* monitor)</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    {</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        this-&gt;instance = <span class="keyword">this</span>;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        glfwInit();</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="comment">//glEnable(GL_DEPTH_TEST);</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        this-&gt;window = glfwCreateWindow(width, height, Title.c_str(), monitor, NULL);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="keywordflow">if</span> (window == NULL)</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        {</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Failed to create GLFW window&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            glfwTerminate();</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <a class="code hl_function" href="class_engine.html#ab44d76e2ff6057e73d6210cf9af0d89e">init</a>();</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordtype">int</span> success;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="keywordtype">char</span> infoLog[512];</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        vertexShader = glCreateShader(GL_VERTEX_SHADER);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        glEnable(GL_DEPTH_TEST);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        glShaderSource(vertexShader, 1, &amp;vertexShaderSource, NULL);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        glCompileShader(vertexShader);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &amp;success);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordflow">if</span> (!success)</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        {</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        }</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        glShaderSource(fragmentShader,1,&amp;fragmentShaderSource,NULL);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        glCompileShader(fragmentShader);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &amp;success);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordflow">if</span> (!success)</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        }</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        vertexLightningShader = glCreateShader(GL_VERTEX_SHADER);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        glShaderSource(vertexLightningShader, 1, &amp;vertexLightningShaderSource, NULL);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        glCompileShader(vertexLightningShader);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        glGetShaderiv(vertexLightningShader, GL_COMPILE_STATUS, &amp;success);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="keywordflow">if</span> (!success)</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        {</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>            glGetShaderInfoLog(vertexLightningShader, 512, NULL, infoLog);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        }</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        fragmentLightningShader = glCreateShader(GL_FRAGMENT_SHADER);</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        glShaderSource(fragmentLightningShader, 1, &amp;fragmentLightningShaderSource, NULL);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        glCompileShader(fragmentLightningShader);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        glGetShaderiv(fragmentLightningShader, GL_COMPILE_STATUS, &amp;success);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">if</span> (!success)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        {</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            glGetShaderInfoLog(fragmentLightningShader, 512, NULL, infoLog);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        }</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        programShader2 = glCreateProgram();</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        glAttachShader(programShader2, vertexLightningShader);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        glAttachShader(programShader2, fragmentLightningShader);</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        glLinkProgram(programShader2);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        glGetProgramiv(programShader2, GL_LINK_STATUS, &amp;success);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            glGetProgramInfoLog(programShader2, 512, NULL, infoLog);</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::PROGRAM::LINKING_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        }</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        glDeleteShader(vertexShader);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        glDeleteShader(fragmentShader);</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        glDeleteShader(vertexLightningShader);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        glDeleteShader(fragmentLightningShader);</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        this-&gt;screenHeight = height;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        this-&gt;screenWidth = width;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        this-&gt;monitor = monitor;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        camera = <span class="keyword">new</span> <a class="code hl_class" href="class_camera.html">Camera</a>(width, height,programShader2,programShader2, window);</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        glfwSetMouseButtonCallback(window, MouseButtonCallback);</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        glfwSetCursorPosCallback(window, MouseCallback);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    }</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine.html#a755095a948bc7b400a7164ca9c8fe876">setWindowSize</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine.html#a867b1384af8bf34749a32e8e7a46f62f">isFullscreen</a>(<span class="keywordtype">bool</span> fullscreen);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine.html#ab44d76e2ff6057e73d6210cf9af0d89e">init</a>();</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine.html#aa1aec35d59f1364a79c7a62c29640226">processInput</a>();</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine.html#a25ad610aaf59ae357c28796f75cfa3e0">mainLoop</a>();</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine.html#a41cb5f12454927da08dd45f8c3aa8c2b">setBackgroundColor</a>(<span class="keywordtype">float</span> r,<span class="keywordtype">float</span> g,<span class="keywordtype">float</span> b,<span class="keywordtype">float</span> a);</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine.html#a7d7521f22d0d4f5dbea29ecb411f530f">generateCube</a>();</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno"><a class="line" href="class_engine.html#a96375b36ffad031d151165a250336d5f">  302</a></span>    <span class="keyword">static</span> <a class="code hl_class" href="class_engine.html">Engine</a>* <a class="code hl_function" href="class_engine.html#a96375b36ffad031d151165a250336d5f">getInstance</a>()</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    {</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <span class="keywordflow">return</span> instance;</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    }</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno"><a class="line" href="class_engine.html#a34988d3f3e68a19b438b02eb009e147b">  311</a></span>    <a class="code hl_class" href="class_camera.html">Camera</a>* <a class="code hl_function" href="class_engine.html#a34988d3f3e68a19b438b02eb009e147b">getCamera</a>()</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    {</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        <span class="keywordflow">return</span> camera;</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    }</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    GLFWwindow* <a class="code hl_function" href="class_engine.html#aee74e4ad8c03c700aeeb74f349c2d7d4">getWindow</a>();</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>};</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">#endif </span><span class="comment">// !engine_h</span></div>
+<div class="ttc" id="aclass_bitmap_handler_html"><div class="ttname"><a href="class_bitmap_handler.html">BitmapHandler</a></div><div class="ttdoc">Klasa odpowiadająca za obsługę bitmap.</div><div class="ttdef"><b>Definition:</b> BitmapHandler.h:13</div></div>
+<div class="ttc" id="aclass_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdoc">Klasa reprezentująca kamerę</div><div class="ttdef"><b>Definition:</b> Camera.h:11</div></div>
+<div class="ttc" id="aclass_cube_html"><div class="ttname"><a href="class_cube.html">Cube</a></div><div class="ttdoc">Klasa sześcianu.</div><div class="ttdef"><b>Definition:</b> Cube.h:13</div></div>
+<div class="ttc" id="aclass_engine_html"><div class="ttname"><a href="class_engine.html">Engine</a></div><div class="ttdoc">główna klasa Engine</div><div class="ttdef"><b>Definition:</b> engine.h:46</div></div>
+<div class="ttc" id="aclass_engine_html_a25ad610aaf59ae357c28796f75cfa3e0"><div class="ttname"><a href="class_engine.html#a25ad610aaf59ae357c28796f75cfa3e0">Engine::mainLoop</a></div><div class="ttdeci">void mainLoop()</div><div class="ttdoc">główna pętla gry</div><div class="ttdef"><b>Definition:</b> Engine.cpp:59</div></div>
+<div class="ttc" id="aclass_engine_html_a34988d3f3e68a19b438b02eb009e147b"><div class="ttname"><a href="class_engine.html#a34988d3f3e68a19b438b02eb009e147b">Engine::getCamera</a></div><div class="ttdeci">Camera * getCamera()</div><div class="ttdoc">pobieranie wskaźnika na kamerę</div><div class="ttdef"><b>Definition:</b> engine.h:311</div></div>
+<div class="ttc" id="aclass_engine_html_a41cb5f12454927da08dd45f8c3aa8c2b"><div class="ttname"><a href="class_engine.html#a41cb5f12454927da08dd45f8c3aa8c2b">Engine::setBackgroundColor</a></div><div class="ttdeci">void setBackgroundColor(float r, float g, float b, float a)</div><div class="ttdoc">Ustawia kolor tła.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:52</div></div>
+<div class="ttc" id="aclass_engine_html_a755095a948bc7b400a7164ca9c8fe876"><div class="ttname"><a href="class_engine.html#a755095a948bc7b400a7164ca9c8fe876">Engine::setWindowSize</a></div><div class="ttdeci">void setWindowSize(unsigned int width, unsigned int height)</div><div class="ttdoc">ustawia rozmiar ekranu</div><div class="ttdef"><b>Definition:</b> Engine.cpp:32</div></div>
+<div class="ttc" id="aclass_engine_html_a7d7521f22d0d4f5dbea29ecb411f530f"><div class="ttname"><a href="class_engine.html#a7d7521f22d0d4f5dbea29ecb411f530f">Engine::generateCube</a></div><div class="ttdeci">void generateCube()</div><div class="ttdoc">generowanie sześcianów</div><div class="ttdef"><b>Definition:</b> Engine.cpp:280</div></div>
+<div class="ttc" id="aclass_engine_html_a7d8a59a55144db95f88e0582d88ec064"><div class="ttname"><a href="class_engine.html#a7d8a59a55144db95f88e0582d88ec064">Engine::Engine</a></div><div class="ttdeci">Engine(unsigned int width, unsigned int height, std::string Title, GLFWmonitor *monitor)</div><div class="ttdoc">Konstruktor klasy Engine.</div><div class="ttdef"><b>Definition:</b> engine.h:173</div></div>
+<div class="ttc" id="aclass_engine_html_a867b1384af8bf34749a32e8e7a46f62f"><div class="ttname"><a href="class_engine.html#a867b1384af8bf34749a32e8e7a46f62f">Engine::isFullscreen</a></div><div class="ttdeci">void isFullscreen(bool fullscreen)</div><div class="ttdoc">przełącza pełny ekran</div><div class="ttdef"><b>Definition:</b> Engine.cpp:36</div></div>
+<div class="ttc" id="aclass_engine_html_a96375b36ffad031d151165a250336d5f"><div class="ttname"><a href="class_engine.html#a96375b36ffad031d151165a250336d5f">Engine::getInstance</a></div><div class="ttdeci">static Engine * getInstance()</div><div class="ttdoc">pobieranie instancji klasy</div><div class="ttdef"><b>Definition:</b> engine.h:302</div></div>
+<div class="ttc" id="aclass_engine_html_aa1aec35d59f1364a79c7a62c29640226"><div class="ttname"><a href="class_engine.html#aa1aec35d59f1364a79c7a62c29640226">Engine::processInput</a></div><div class="ttdeci">void processInput()</div><div class="ttdoc">przetwarzanie urządzeń wejścia</div><div class="ttdef"><b>Definition:</b> Engine.cpp:14</div></div>
+<div class="ttc" id="aclass_engine_html_ab44d76e2ff6057e73d6210cf9af0d89e"><div class="ttname"><a href="class_engine.html#ab44d76e2ff6057e73d6210cf9af0d89e">Engine::init</a></div><div class="ttdeci">void init()</div><div class="ttdoc">inicjacja silnika</div><div class="ttdef"><b>Definition:</b> Engine.cpp:4</div></div>
+<div class="ttc" id="aclass_engine_html_ac20051580358250b61d636b639530d8c"><div class="ttname"><a href="class_engine.html#ac20051580358250b61d636b639530d8c">Engine::bulletsVector</a></div><div class="ttdeci">std::vector&lt; Bullet &gt; bulletsVector</div><div class="ttdoc">Vector przechowujący pociski.</div><div class="ttdef"><b>Definition:</b> engine.h:164</div></div>
+<div class="ttc" id="aclass_engine_html_aee74e4ad8c03c700aeeb74f349c2d7d4"><div class="ttname"><a href="class_engine.html#aee74e4ad8c03c700aeeb74f349c2d7d4">Engine::getWindow</a></div><div class="ttdeci">GLFWwindow * getWindow()</div><div class="ttdoc">pobieranie wskaźnika na okno</div><div class="ttdef"><b>Definition:</b> Engine.cpp:48</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

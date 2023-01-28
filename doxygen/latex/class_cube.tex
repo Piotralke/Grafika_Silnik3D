@@ -1,0 +1,373 @@
+\hypertarget{class_cube}{}\doxysection{Dokumentacja klasy Cube}
+\label{class_cube}\index{Cube@{Cube}}
+
+
+Klasa sześcianu.  
+
+
+
+
+{\ttfamily \#include $<$Cube.\+h$>$}
+
+Diagram dziedziczenia dla Cube\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_cube}
+\end{center}
+\end{figure}
+\doxysubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cube_a4c0ace60fe55ac61ead5327d7dc68826}{Cube}} (glm\+::vec3 point, glm\+::vec3 color)
+\begin{DoxyCompactList}\small\item\em Konstruktor z parametrami klasy szescian. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cube_aceda82cdd8a9e10c098138135db7c8bf}{draw}} (unsigned int program\+Shader, unsigned int texture, int texture\+Num)
+\begin{DoxyCompactList}\small\item\em Rysowanie sześcianu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cube_ad8f2b33e24e173ed1e8f31642c415549}{set\+Vertices}} (float \mbox{\hyperlink{class_cube_a3b830918f659569f8f2346024b32f177}{vertices}}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Ustawia matryce sześcianu. \end{DoxyCompactList}\item 
+float $\ast$ \mbox{\hyperlink{class_cube_a10b5c38fa3f2a0331a8990905f233aa3}{get\+Vertices}} ()
+\begin{DoxyCompactList}\small\item\em pobiera matrycę sześcianu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cube_a5d26618f78d0080e8a35c460704ef377}{translate}} (glm\+::vec3 translation)
+\begin{DoxyCompactList}\small\item\em przesunięcie sześcianu o wektor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cube_ae9cea4d5b454722e8759ab43cfc503c9}{rotateX}} (float angle)
+\begin{DoxyCompactList}\small\item\em obrót w osi x \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cube_a8ef2b795ba39c09b9cb12b9f2f1da055}{rotateY}} (float angle)
+\begin{DoxyCompactList}\small\item\em obrót w osi y \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cube_a36e1d2e0b3bb11ca93e3606bcf629372}{rotateZ}} (float angle)
+\begin{DoxyCompactList}\small\item\em obrót w osi z \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cube_a2d76646a30bea28a5f932b4231bac416}{scale}} (float k)
+\begin{DoxyCompactList}\small\item\em przeskaluj sześcian \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_cube_ae55713af649b1cc24426d2ca209b8163}{get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera pozycję sześcianu. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_cube_af368682931045fa922b5cc25332dc6a1}{get\+Scaling\+Factor}} ()
+\begin{DoxyCompactList}\small\item\em pobiera swpółczynnik skalowania \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cube_a2eb57f55bd7439095050ac673a9dbe43}{set\+Position}} (glm\+::vec3 \mbox{\hyperlink{class_cube_ab6d4cfdd0bc4ec65babd80bdd15496dc}{position}})
+\begin{DoxyCompactList}\small\item\em Ustawia pozycję sześcianu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_cube_a77f9cf4bda1ca6443cc4e010aa302f9f}{get\+RotX}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca obrót w osi x. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_cube_a132ce6897068d97ecf72cded6229e54e}{get\+RotY}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca obrót w osi y. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_cube_a1ce45938a6670aa700ba00489b7d6720}{get\+RotZ}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca obrót w osi z. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty chronione}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_cube_a3b830918f659569f8f2346024b32f177}{vertices}} \mbox{[}288\mbox{]}
+\begin{DoxyCompactList}\small\item\em matryca sześcianów z pozycją, pozycją tekstury oraz wektory normalne \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cube_ab2d9c101ec3b76c71a6529d7a00d023e}\label{class_cube_ab2d9c101ec3b76c71a6529d7a00d023e}} 
+unsigned int {\bfseries VBO}
+\item 
+\mbox{\Hypertarget{class_cube_a01aec64641385b1e5008a8c7f544acae}\label{class_cube_a01aec64641385b1e5008a8c7f544acae}} 
+unsigned int {\bfseries VAO}
+\item 
+\mbox{\Hypertarget{class_cube_ab15cd133c91dd6a25cb4f731ce1b642d}\label{class_cube_ab15cd133c91dd6a25cb4f731ce1b642d}} 
+unsigned int {\bfseries EBO}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_cube_ab6d4cfdd0bc4ec65babd80bdd15496dc}{position}}
+\begin{DoxyCompactList}\small\item\em pozycja \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_cube_a7a9d034147db53678d8c44eb5c213573}{scaling\+Factor}}
+\begin{DoxyCompactList}\small\item\em współczynnik skalowania \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_cube_a5b3f59ab4000a797e56589d253721827}{rotation\+AngleX}} =0
+\begin{DoxyCompactList}\small\item\em kąt obrotu w osi X \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_cube_aaf820e4e64def1ee62f56547b13d7c61}{rotation\+AngleY}} =0
+\begin{DoxyCompactList}\small\item\em kąt obrotu w osi Y \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_cube_a922fd1659cb72344428609ba91666c2a}{rotation\+AngleZ}} =0
+\begin{DoxyCompactList}\small\item\em kąt obrotu w osi Z \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa sześcianu. 
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\mbox{\Hypertarget{class_cube_a4c0ace60fe55ac61ead5327d7dc68826}\label{class_cube_a4c0ace60fe55ac61ead5327d7dc68826}} 
+\index{Cube@{Cube}!Cube@{Cube}}
+\index{Cube@{Cube}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{Cube()}{Cube()}}
+{\footnotesize\ttfamily Cube\+::\+Cube (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{point,  }\item[{glm\+::vec3}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor z parametrami klasy szescian. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em point} & pozycja \\
+\hline
+{\em color} & kolor sześcianu \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\mbox{\Hypertarget{class_cube_aceda82cdd8a9e10c098138135db7c8bf}\label{class_cube_aceda82cdd8a9e10c098138135db7c8bf}} 
+\index{Cube@{Cube}!draw@{draw}}
+\index{draw@{draw}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Cube\+::draw (\begin{DoxyParamCaption}\item[{unsigned int}]{program\+Shader,  }\item[{unsigned int}]{texture,  }\item[{int}]{texture\+Num }\end{DoxyParamCaption})}
+
+
+
+Rysowanie sześcianu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em program\+Shader} & id shadera \\
+\hline
+{\em texture} & id tekstury \\
+\hline
+{\em texture\+Num} & numer tekstury \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cube_ae55713af649b1cc24426d2ca209b8163}\label{class_cube_ae55713af649b1cc24426d2ca209b8163}} 
+\index{Cube@{Cube}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily glm\+::vec3 Cube\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Pobiera pozycję sześcianu. 
+
+\begin{DoxyReturn}{Zwraca}
+pozycja sześcianu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cube_a77f9cf4bda1ca6443cc4e010aa302f9f}\label{class_cube_a77f9cf4bda1ca6443cc4e010aa302f9f}} 
+\index{Cube@{Cube}!getRotX@{getRotX}}
+\index{getRotX@{getRotX}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{getRotX()}{getRotX()}}
+{\footnotesize\ttfamily float Cube\+::get\+RotX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca obrót w osi x. 
+
+\begin{DoxyReturn}{Zwraca}
+obrót w osi x 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cube_a132ce6897068d97ecf72cded6229e54e}\label{class_cube_a132ce6897068d97ecf72cded6229e54e}} 
+\index{Cube@{Cube}!getRotY@{getRotY}}
+\index{getRotY@{getRotY}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{getRotY()}{getRotY()}}
+{\footnotesize\ttfamily float Cube\+::get\+RotY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca obrót w osi y. 
+
+\begin{DoxyReturn}{Zwraca}
+obrót w osi y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cube_a1ce45938a6670aa700ba00489b7d6720}\label{class_cube_a1ce45938a6670aa700ba00489b7d6720}} 
+\index{Cube@{Cube}!getRotZ@{getRotZ}}
+\index{getRotZ@{getRotZ}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{getRotZ()}{getRotZ()}}
+{\footnotesize\ttfamily float Cube\+::get\+RotZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca obrót w osi z. 
+
+\begin{DoxyReturn}{Zwraca}
+obrót w osi z 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cube_af368682931045fa922b5cc25332dc6a1}\label{class_cube_af368682931045fa922b5cc25332dc6a1}} 
+\index{Cube@{Cube}!getScalingFactor@{getScalingFactor}}
+\index{getScalingFactor@{getScalingFactor}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{getScalingFactor()}{getScalingFactor()}}
+{\footnotesize\ttfamily glm\+::vec3 Cube\+::get\+Scaling\+Factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+pobiera swpółczynnik skalowania 
+
+\begin{DoxyReturn}{Zwraca}
+współczynnik skalowania 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cube_a10b5c38fa3f2a0331a8990905f233aa3}\label{class_cube_a10b5c38fa3f2a0331a8990905f233aa3}} 
+\index{Cube@{Cube}!getVertices@{getVertices}}
+\index{getVertices@{getVertices}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{getVertices()}{getVertices()}}
+{\footnotesize\ttfamily float $\ast$ Cube\+::get\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+pobiera matrycę sześcianu 
+
+\begin{DoxyReturn}{Zwraca}
+matryca sześcianu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cube_ae9cea4d5b454722e8759ab43cfc503c9}\label{class_cube_ae9cea4d5b454722e8759ab43cfc503c9}} 
+\index{Cube@{Cube}!rotateX@{rotateX}}
+\index{rotateX@{rotateX}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{rotateX()}{rotateX()}}
+{\footnotesize\ttfamily void Cube\+::rotateX (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+obrót w osi x 
+
+
+\begin{DoxyParams}{Parametry}
+{\em angle} & kąt obrotu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cube_a8ef2b795ba39c09b9cb12b9f2f1da055}\label{class_cube_a8ef2b795ba39c09b9cb12b9f2f1da055}} 
+\index{Cube@{Cube}!rotateY@{rotateY}}
+\index{rotateY@{rotateY}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{rotateY()}{rotateY()}}
+{\footnotesize\ttfamily void Cube\+::rotateY (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+obrót w osi y 
+
+
+\begin{DoxyParams}{Parametry}
+{\em angle} & kąt obrotu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cube_a36e1d2e0b3bb11ca93e3606bcf629372}\label{class_cube_a36e1d2e0b3bb11ca93e3606bcf629372}} 
+\index{Cube@{Cube}!rotateZ@{rotateZ}}
+\index{rotateZ@{rotateZ}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{rotateZ()}{rotateZ()}}
+{\footnotesize\ttfamily void Cube\+::rotateZ (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+obrót w osi z 
+
+
+\begin{DoxyParams}{Parametry}
+{\em angle} & kąt obrotu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cube_a2d76646a30bea28a5f932b4231bac416}\label{class_cube_a2d76646a30bea28a5f932b4231bac416}} 
+\index{Cube@{Cube}!scale@{scale}}
+\index{scale@{scale}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{scale()}{scale()}}
+{\footnotesize\ttfamily void Cube\+::scale (\begin{DoxyParamCaption}\item[{float}]{k }\end{DoxyParamCaption})}
+
+
+
+przeskaluj sześcian 
+
+
+\begin{DoxyParams}{Parametry}
+{\em współczynnik} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cube_a2eb57f55bd7439095050ac673a9dbe43}\label{class_cube_a2eb57f55bd7439095050ac673a9dbe43}} 
+\index{Cube@{Cube}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Cube\+::set\+Position (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position }\end{DoxyParamCaption})}
+
+
+
+Ustawia pozycję sześcianu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em wektor} & pozycji \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cube_ad8f2b33e24e173ed1e8f31642c415549}\label{class_cube_ad8f2b33e24e173ed1e8f31642c415549}} 
+\index{Cube@{Cube}!setVertices@{setVertices}}
+\index{setVertices@{setVertices}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{setVertices()}{setVertices()}}
+{\footnotesize\ttfamily void Cube\+::set\+Vertices (\begin{DoxyParamCaption}\item[{float}]{vertices\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Ustawia matryce sześcianu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em vertices} & matryca sześcianu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cube_a5d26618f78d0080e8a35c460704ef377}\label{class_cube_a5d26618f78d0080e8a35c460704ef377}} 
+\index{Cube@{Cube}!translate@{translate}}
+\index{translate@{translate}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily void Cube\+::translate (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{translation }\end{DoxyParamCaption})}
+
+
+
+przesunięcie sześcianu o wektor 
+
+
+\begin{DoxyParams}{Parametry}
+{\em translation} & wektor przesunięcia \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\mbox{\Hypertarget{class_cube_ab6d4cfdd0bc4ec65babd80bdd15496dc}\label{class_cube_ab6d4cfdd0bc4ec65babd80bdd15496dc}} 
+\index{Cube@{Cube}!position@{position}}
+\index{position@{position}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily glm\+::vec3 Cube\+::position\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+pozycja 
+
+\mbox{\Hypertarget{class_cube_a5b3f59ab4000a797e56589d253721827}\label{class_cube_a5b3f59ab4000a797e56589d253721827}} 
+\index{Cube@{Cube}!rotationAngleX@{rotationAngleX}}
+\index{rotationAngleX@{rotationAngleX}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{rotationAngleX}{rotationAngleX}}
+{\footnotesize\ttfamily float Cube\+::rotation\+AngleX =0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+kąt obrotu w osi X 
+
+\mbox{\Hypertarget{class_cube_aaf820e4e64def1ee62f56547b13d7c61}\label{class_cube_aaf820e4e64def1ee62f56547b13d7c61}} 
+\index{Cube@{Cube}!rotationAngleY@{rotationAngleY}}
+\index{rotationAngleY@{rotationAngleY}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{rotationAngleY}{rotationAngleY}}
+{\footnotesize\ttfamily float Cube\+::rotation\+AngleY =0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+kąt obrotu w osi Y 
+
+\mbox{\Hypertarget{class_cube_a922fd1659cb72344428609ba91666c2a}\label{class_cube_a922fd1659cb72344428609ba91666c2a}} 
+\index{Cube@{Cube}!rotationAngleZ@{rotationAngleZ}}
+\index{rotationAngleZ@{rotationAngleZ}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{rotationAngleZ}{rotationAngleZ}}
+{\footnotesize\ttfamily float Cube\+::rotation\+AngleZ =0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+kąt obrotu w osi Z 
+
+\mbox{\Hypertarget{class_cube_a7a9d034147db53678d8c44eb5c213573}\label{class_cube_a7a9d034147db53678d8c44eb5c213573}} 
+\index{Cube@{Cube}!scalingFactor@{scalingFactor}}
+\index{scalingFactor@{scalingFactor}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{scalingFactor}{scalingFactor}}
+{\footnotesize\ttfamily glm\+::vec3 Cube\+::scaling\+Factor\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+współczynnik skalowania 
+
+\mbox{\Hypertarget{class_cube_a3b830918f659569f8f2346024b32f177}\label{class_cube_a3b830918f659569f8f2346024b32f177}} 
+\index{Cube@{Cube}!vertices@{vertices}}
+\index{vertices@{vertices}!Cube@{Cube}}
+\doxysubsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily float Cube\+::vertices\mbox{[}288\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+matryca sześcianów z pozycją, pozycją tekstury oraz wektory normalne 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+Cube.\+h\item 
+Cube.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,215 @@
+\hypertarget{class_engine}{}\doxysection{Dokumentacja klasy Engine}
+\label{class_engine}\index{Engine@{Engine}}
+
+
+główna klasa \mbox{\hyperlink{class_engine}{Engine}}  
+
+
+
+
+{\ttfamily \#include $<$engine.\+h$>$}
+
+\doxysubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_engine_a7d8a59a55144db95f88e0582d88ec064}{Engine}} (unsigned int width, unsigned int height, std\+::string Title, GLFWmonitor $\ast$monitor)
+\begin{DoxyCompactList}\small\item\em Konstruktor klasy \mbox{\hyperlink{class_engine}{Engine}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a755095a948bc7b400a7164ca9c8fe876}{set\+Window\+Size}} (unsigned int width, unsigned int height)
+\begin{DoxyCompactList}\small\item\em ustawia rozmiar ekranu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a867b1384af8bf34749a32e8e7a46f62f}{is\+Fullscreen}} (bool fullscreen)
+\begin{DoxyCompactList}\small\item\em przełącza pełny ekran \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_ab44d76e2ff6057e73d6210cf9af0d89e}{init}} ()
+\begin{DoxyCompactList}\small\item\em inicjacja silnika \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_aa1aec35d59f1364a79c7a62c29640226}{process\+Input}} ()
+\begin{DoxyCompactList}\small\item\em przetwarzanie urządzeń wejścia \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a25ad610aaf59ae357c28796f75cfa3e0}{main\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em główna pętla gry \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a41cb5f12454927da08dd45f8c3aa8c2b}{set\+Background\+Color}} (float r, float g, float b, float a)
+\begin{DoxyCompactList}\small\item\em Ustawia kolor tła. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a7d7521f22d0d4f5dbea29ecb411f530f}{generate\+Cube}} ()
+\begin{DoxyCompactList}\small\item\em generowanie sześcianów \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_camera}{Camera}} $\ast$ \mbox{\hyperlink{class_engine_a34988d3f3e68a19b438b02eb009e147b}{get\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em pobieranie wskaźnika na kamerę \end{DoxyCompactList}\item 
+GLFWwindow $\ast$ \mbox{\hyperlink{class_engine_aee74e4ad8c03c700aeeb74f349c2d7d4}{get\+Window}} ()
+\begin{DoxyCompactList}\small\item\em pobieranie wskaźnika na okno \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_engine}{Engine}} $\ast$ \mbox{\hyperlink{class_engine_a96375b36ffad031d151165a250336d5f}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em pobieranie instancji klasy \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_ac20051580358250b61d636b639530d8c}\label{class_engine_ac20051580358250b61d636b639530d8c}} 
+std\+::vector$<$ \mbox{\hyperlink{class_bullet}{Bullet}} $>$ {\bfseries bullets\+Vector}
+\begin{DoxyCompactList}\small\item\em Vector przechowujący pociski. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+główna klasa \mbox{\hyperlink{class_engine}{Engine}} 
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\mbox{\Hypertarget{class_engine_a7d8a59a55144db95f88e0582d88ec064}\label{class_engine_a7d8a59a55144db95f88e0582d88ec064}} 
+\index{Engine@{Engine}!Engine@{Engine}}
+\index{Engine@{Engine}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Engine()}{Engine()}}
+{\footnotesize\ttfamily Engine\+::\+Engine (\begin{DoxyParamCaption}\item[{unsigned int}]{width,  }\item[{unsigned int}]{height,  }\item[{std\+::string}]{Title,  }\item[{GLFWmonitor $\ast$}]{monitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor klasy \mbox{\hyperlink{class_engine}{Engine}}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em width} & szerokość \\
+\hline
+{\em height} & wysokość \\
+\hline
+{\em Title} & tytuł okna \\
+\hline
+{\em monitor} & wskaźnik na monitor \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\mbox{\Hypertarget{class_engine_a7d7521f22d0d4f5dbea29ecb411f530f}\label{class_engine_a7d7521f22d0d4f5dbea29ecb411f530f}} 
+\index{Engine@{Engine}!generateCube@{generateCube}}
+\index{generateCube@{generateCube}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{generateCube()}{generateCube()}}
+{\footnotesize\ttfamily void Engine\+::generate\+Cube (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+generowanie sześcianów 
+
+\mbox{\Hypertarget{class_engine_a34988d3f3e68a19b438b02eb009e147b}\label{class_engine_a34988d3f3e68a19b438b02eb009e147b}} 
+\index{Engine@{Engine}!getCamera@{getCamera}}
+\index{getCamera@{getCamera}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getCamera()}{getCamera()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_camera}{Camera}} $\ast$ Engine\+::get\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+pobieranie wskaźnika na kamerę 
+
+\begin{DoxyReturn}{Zwraca}
+wskaźnik na kamerę 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_engine_a96375b36ffad031d151165a250336d5f}\label{class_engine_a96375b36ffad031d151165a250336d5f}} 
+\index{Engine@{Engine}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_engine}{Engine}} $\ast$ Engine\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+pobieranie instancji klasy 
+
+\begin{DoxyReturn}{Zwraca}
+wskaźnik na klasę engine 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_engine_aee74e4ad8c03c700aeeb74f349c2d7d4}\label{class_engine_aee74e4ad8c03c700aeeb74f349c2d7d4}} 
+\index{Engine@{Engine}!getWindow@{getWindow}}
+\index{getWindow@{getWindow}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getWindow()}{getWindow()}}
+{\footnotesize\ttfamily GLFWwindow $\ast$ Engine\+::get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+pobieranie wskaźnika na okno 
+
+\begin{DoxyReturn}{Zwraca}
+wskaźnik na okno 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_engine_ab44d76e2ff6057e73d6210cf9af0d89e}\label{class_engine_ab44d76e2ff6057e73d6210cf9af0d89e}} 
+\index{Engine@{Engine}!init@{init}}
+\index{init@{init}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Engine\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+inicjacja silnika 
+
+\mbox{\Hypertarget{class_engine_a867b1384af8bf34749a32e8e7a46f62f}\label{class_engine_a867b1384af8bf34749a32e8e7a46f62f}} 
+\index{Engine@{Engine}!isFullscreen@{isFullscreen}}
+\index{isFullscreen@{isFullscreen}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{isFullscreen()}{isFullscreen()}}
+{\footnotesize\ttfamily void Engine\+::is\+Fullscreen (\begin{DoxyParamCaption}\item[{bool}]{fullscreen }\end{DoxyParamCaption})}
+
+
+
+przełącza pełny ekran 
+
+
+\begin{DoxyParams}{Parametry}
+{\em fullscreen} & czy włączyć czy wyłączyć \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_engine_a25ad610aaf59ae357c28796f75cfa3e0}\label{class_engine_a25ad610aaf59ae357c28796f75cfa3e0}} 
+\index{Engine@{Engine}!mainLoop@{mainLoop}}
+\index{mainLoop@{mainLoop}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{mainLoop()}{mainLoop()}}
+{\footnotesize\ttfamily void Engine\+::main\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+główna pętla gry 
+
+\mbox{\Hypertarget{class_engine_aa1aec35d59f1364a79c7a62c29640226}\label{class_engine_aa1aec35d59f1364a79c7a62c29640226}} 
+\index{Engine@{Engine}!processInput@{processInput}}
+\index{processInput@{processInput}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{processInput()}{processInput()}}
+{\footnotesize\ttfamily void Engine\+::process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+przetwarzanie urządzeń wejścia 
+
+\mbox{\Hypertarget{class_engine_a41cb5f12454927da08dd45f8c3aa8c2b}\label{class_engine_a41cb5f12454927da08dd45f8c3aa8c2b}} 
+\index{Engine@{Engine}!setBackgroundColor@{setBackgroundColor}}
+\index{setBackgroundColor@{setBackgroundColor}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setBackgroundColor()}{setBackgroundColor()}}
+{\footnotesize\ttfamily void Engine\+::set\+Background\+Color (\begin{DoxyParamCaption}\item[{float}]{r,  }\item[{float}]{g,  }\item[{float}]{b,  }\item[{float}]{a }\end{DoxyParamCaption})}
+
+
+
+Ustawia kolor tła. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em r} & intensywność czerwonego \\
+\hline
+{\em g} & intensywność zielonego \\
+\hline
+{\em b} & intensywność niebieskiego \\
+\hline
+{\em a} & kanał alfa \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_engine_a755095a948bc7b400a7164ca9c8fe876}\label{class_engine_a755095a948bc7b400a7164ca9c8fe876}} 
+\index{Engine@{Engine}!setWindowSize@{setWindowSize}}
+\index{setWindowSize@{setWindowSize}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setWindowSize()}{setWindowSize()}}
+{\footnotesize\ttfamily void Engine\+::set\+Window\+Size (\begin{DoxyParamCaption}\item[{unsigned int}]{width,  }\item[{unsigned int}]{height }\end{DoxyParamCaption})}
+
+
+
+ustawia rozmiar ekranu 
+
+
+\begin{DoxyParams}{Parametry}
+{\em width} & szerokość okna \\
+\hline
+{\em height} & wysokość okna \\
+\hline
+\end{DoxyParams}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+engine.\+h\item 
+Engine.\+cpp\end{DoxyCompactItemize}

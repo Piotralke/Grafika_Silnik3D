@@ -1,0 +1,44 @@
+\hypertarget{_line_8h_source}{}\doxysection{Line.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef line\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define lineh\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}glad/glad.h"{}}}
+\DoxyCodeLine{5 \textcolor{comment}{//\#include "{}glm/glm.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GLFW/glfw3.h"{}}}
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_line}{Line}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{18     \textcolor{keywordtype}{float} vertices[6];}
+\DoxyCodeLine{19     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} VBO, VAO;}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_line_a8e098f3f842da3f2945c1de84c066dc9}{Line}}(\textcolor{keywordtype}{float} vertices[])}
+\DoxyCodeLine{27     \{}
+\DoxyCodeLine{28         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 6; i++)}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             this-\/>vertices[i] = vertices[i];}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32         glGenVertexArrays(1, \&VAO);}
+\DoxyCodeLine{33         glGenBuffers(1, \&VBO);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         glBindVertexArray(VAO);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         glBindBuffer(GL\_ARRAY\_BUFFER, VBO);}
+\DoxyCodeLine{38         glBufferData(GL\_ARRAY\_BUFFER, \textcolor{keyword}{sizeof}(this-\/>vertices), this-\/>vertices, GL\_STATIC\_DRAW);}
+\DoxyCodeLine{39         }
+\DoxyCodeLine{40         glVertexAttribPointer(0, 3, GL\_FLOAT, GL\_FALSE, 3 * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{41         glEnableVertexAttribArray(0);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         glBindBuffer(GL\_ARRAY\_BUFFER, 0);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         glBindVertexArray(0);}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_line_ab6265993bf5acbc28830181c3e712f10}{draw}}();}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_line_a4250d6f0bb4f8116ff539c6974a744e2}{setVertices}}(\textcolor{keywordtype}{float} vertices[]);}
+\DoxyCodeLine{63     \textcolor{keywordtype}{float}* \mbox{\hyperlink{class_line_a1cb0c94b9802bec0b1c76a924ba761cb}{getVertices}}();}
+\DoxyCodeLine{64 \};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !line\_h}}
+
+\end{DoxyCode}

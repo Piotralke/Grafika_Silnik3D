@@ -4,12 +4,25 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
+/**
+ * @brief Klasa reprezentująca łamaną linię
+ * 
+ */
 class BrokenLine
 {
 private:
+/**
+ * @brief Tablica przechowująca dane o liniach
+ * 
+ */
 	float vertices[6];
 	unsigned int VBO, VAO;
 public:
+/**
+ * @brief Konstruktor obiektu BrokenLine
+ * 
+ * @param vertices Tablica przechowująca dane o liniach
+ */
 	BrokenLine(float vertices[])
 	{
 		for (int i = 0; i < 6; i++)
@@ -31,8 +44,22 @@ public:
 
 		glBindVertexArray(0);
 	}
+	/**
+	 * @brief Funkcja rysująca linię
+	 * 
+	 */
 	void draw();
+	/**
+	 * @brief Ustawia nową tablicę vertices
+	 * 
+	 * @param vertices Tablica przechowująca dane o liniach
+	 */
 	void setVertices(float vertices[]);
+	/**
+	 * @brief Zwraca tabelę vertices
+	 * 
+	 * @return float* 
+	 */
 	float* getVertices();
 };
 

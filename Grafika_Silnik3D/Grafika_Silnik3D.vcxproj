@@ -167,8 +167,14 @@
     <ClInclude Include="TriangleStrip.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\resources\textures\aim.jpg" />
     <Image Include="..\resources\textures\awesomeface.png" />
     <Image Include="..\resources\textures\container.jpg" />
+    <Image Include="..\resources\textures\dpych.jpg" />
+    <Image Include="..\resources\textures\essa.jpg" />
+    <Image Include="..\resources\textures\floor.jpg" />
+    <Image Include="..\resources\textures\gbs.jpg" />
+    <Image Include="..\resources\textures\pdziew.jpg" />
     <Image Include="..\resources\textures\wall.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

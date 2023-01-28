@@ -5,12 +5,29 @@
 //#include "glm/glm.hpp"
 #include "GLFW/glfw3.h"
 
+/**
+ * @brief Klasa odpowiedzialna za kwadrat
+ * 
+ */
 class Rectangle
 {
 private:
+/**
+ * @brief tablica wierzchołków kwadratu
+ * 
+ */
 	float vertices[12];
+/**
+ * @brief VBO, VAO EBO
+ * 
+ */
 	unsigned int VBO, VAO, EBO;
 public:
+/**
+ * @brief Konstruktor klasy Kwadrat
+ * 
+ * @param vertices 
+ */
 	Rectangle(float vertices[])
 	{
 		for (int i = 0; i < 12; i++)
@@ -40,8 +57,22 @@ public:
 		glBindVertexArray(0);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}
+	/**
+	 * @brief Funkcja rysująca kwadrat na ekranie
+	 * 
+	 */
 	void draw();
+	/**
+	 * @brief Ustawienie wierzchołków kwadratu
+	 * 
+	 * @param vertices tablica wierzchołków kwadratu
+	 */
 	void setVertices(float vertices[]);
+	/**
+	 * @brief Pobranie wierzchołków kwadratu
+	 * 
+	 * @return float* - zwrócenie wierzchołków kwadratu
+	 */
 	float* getVertices();
 };
 

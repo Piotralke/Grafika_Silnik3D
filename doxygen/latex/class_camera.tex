@@ -1,0 +1,206 @@
+\hypertarget{class_camera}{}\doxysection{Dokumentacja klasy Camera}
+\label{class_camera}\index{Camera@{Camera}}
+
+
+Klasa reprezentująca kamerę  
+
+
+
+
+{\ttfamily \#include $<$Camera.\+h$>$}
+
+\doxysubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_camera_a01f94c3543f56ede7af49dc778f19331}{Camera}} ()
+\begin{DoxyCompactList}\small\item\em Domyślny konstruktor klasy kamera. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_camera_a54d124b3a5b6edf11ab099422a5d5eb3}{Camera}} (float screen\+Width, float screen\+Height, unsigned int program\+Shader, unsigned int program\+Shader2, GLFWwindow $\ast$window)
+\begin{DoxyCompactList}\small\item\em Konstruktor z parametrami klasy kamera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_af382ecc8bc0b8064b8c5a525f592fcc4}{Update\+Camera}} (unsigned int program\+Shader, unsigned int program\+Shader2)
+\begin{DoxyCompactList}\small\item\em Aktualizuje pozycje kamery. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a8d4bed6c09bbae34e8634a7f65401fc1}{Vertical\+Move}} (bool is\+Up, float camera\+Speed)
+\begin{DoxyCompactList}\small\item\em Funkcja ruchu wertykalnego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_aefce80dca9a64902784298e8d4fb8f23}{Horizontal\+Move}} (bool is\+Right, float camera\+Speed)
+\begin{DoxyCompactList}\small\item\em Funkcja ruchu horyzontalneog. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a1413c0ad72a928f540702737dfcefd44}{Update\+Mouse}} (double xpos, double ypos)
+\begin{DoxyCompactList}\small\item\em Aktualizacja pozycji myszy. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_camera_a9fd979b84ae4959a77a85090976137db}{get\+View}} ()
+\begin{DoxyCompactList}\small\item\em pobranie matrycy view \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_camera_ab6d97c213564d2523f1c10a4c366ed18}{get\+Camera\+Front}} ()
+\begin{DoxyCompactList}\small\item\em pobierz pozycję przodu kamery \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_camera_a3d4b941b2a2017866638391f0b732399}{get\+Camera\+Pos}} ()
+\begin{DoxyCompactList}\small\item\em pobranie pozycji kamery \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_ad7da7f68dd607a72e463549132437ad5}{set\+Camera\+Pos}} (glm\+::vec3 pos)
+\begin{DoxyCompactList}\small\item\em ustawienie pozycji kamery \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa reprezentująca kamerę 
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\mbox{\Hypertarget{class_camera_a01f94c3543f56ede7af49dc778f19331}\label{class_camera_a01f94c3543f56ede7af49dc778f19331}} 
+\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Camera\+::\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Domyślny konstruktor klasy kamera. 
+
+\mbox{\Hypertarget{class_camera_a54d124b3a5b6edf11ab099422a5d5eb3}\label{class_camera_a54d124b3a5b6edf11ab099422a5d5eb3}} 
+\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{float}]{screen\+Width,  }\item[{float}]{screen\+Height,  }\item[{unsigned int}]{program\+Shader,  }\item[{unsigned int}]{program\+Shader2,  }\item[{GLFWwindow $\ast$}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor z parametrami klasy kamera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em screen\+Width} & szerokość ekranu \\
+\hline
+{\em screen\+Height} & wysokość ekranu \\
+\hline
+{\em program\+Shader} & id shadera 1 \\
+\hline
+{\em program\+Shader2} & id shadera 2 \\
+\hline
+{\em window} & wskaźnik na okno \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\mbox{\Hypertarget{class_camera_ab6d97c213564d2523f1c10a4c366ed18}\label{class_camera_ab6d97c213564d2523f1c10a4c366ed18}} 
+\index{Camera@{Camera}!getCameraFront@{getCameraFront}}
+\index{getCameraFront@{getCameraFront}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getCameraFront()}{getCameraFront()}}
+{\footnotesize\ttfamily glm\+::vec3 Camera\+::get\+Camera\+Front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+pobierz pozycję przodu kamery 
+
+\begin{DoxyReturn}{Zwraca}
+wektor pozycji kamery 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_camera_a3d4b941b2a2017866638391f0b732399}\label{class_camera_a3d4b941b2a2017866638391f0b732399}} 
+\index{Camera@{Camera}!getCameraPos@{getCameraPos}}
+\index{getCameraPos@{getCameraPos}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getCameraPos()}{getCameraPos()}}
+{\footnotesize\ttfamily glm\+::vec3 Camera\+::get\+Camera\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+pobranie pozycji kamery 
+
+\begin{DoxyReturn}{Zwraca}
+wktor pozycji kamery 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_camera_a9fd979b84ae4959a77a85090976137db}\label{class_camera_a9fd979b84ae4959a77a85090976137db}} 
+\index{Camera@{Camera}!getView@{getView}}
+\index{getView@{getView}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily glm\+::mat4 Camera\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+pobranie matrycy view 
+
+\begin{DoxyReturn}{Zwraca}
+matryca view 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_camera_aefce80dca9a64902784298e8d4fb8f23}\label{class_camera_aefce80dca9a64902784298e8d4fb8f23}} 
+\index{Camera@{Camera}!HorizontalMove@{HorizontalMove}}
+\index{HorizontalMove@{HorizontalMove}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{HorizontalMove()}{HorizontalMove()}}
+{\footnotesize\ttfamily void Camera\+::\+Horizontal\+Move (\begin{DoxyParamCaption}\item[{bool}]{is\+Right,  }\item[{float}]{camera\+Speed }\end{DoxyParamCaption})}
+
+
+
+Funkcja ruchu horyzontalneog. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em is\+Right} & czy w prawo \\
+\hline
+{\em camera\+Speed} & prędkość kamery \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_camera_ad7da7f68dd607a72e463549132437ad5}\label{class_camera_ad7da7f68dd607a72e463549132437ad5}} 
+\index{Camera@{Camera}!setCameraPos@{setCameraPos}}
+\index{setCameraPos@{setCameraPos}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{setCameraPos()}{setCameraPos()}}
+{\footnotesize\ttfamily void Camera\+::set\+Camera\+Pos (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})}
+
+
+
+ustawienie pozycji kamery 
+
+
+\begin{DoxyParams}{Parametry}
+{\em pos} & wektor pozycji kamery \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_camera_af382ecc8bc0b8064b8c5a525f592fcc4}\label{class_camera_af382ecc8bc0b8064b8c5a525f592fcc4}} 
+\index{Camera@{Camera}!UpdateCamera@{UpdateCamera}}
+\index{UpdateCamera@{UpdateCamera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{UpdateCamera()}{UpdateCamera()}}
+{\footnotesize\ttfamily void Camera\+::\+Update\+Camera (\begin{DoxyParamCaption}\item[{unsigned int}]{program\+Shader,  }\item[{unsigned int}]{program\+Shader2 }\end{DoxyParamCaption})}
+
+
+
+Aktualizuje pozycje kamery. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em program\+Shader} & id shadera 1 \\
+\hline
+{\em program\+Shader2} & id shadera 2 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_camera_a1413c0ad72a928f540702737dfcefd44}\label{class_camera_a1413c0ad72a928f540702737dfcefd44}} 
+\index{Camera@{Camera}!UpdateMouse@{UpdateMouse}}
+\index{UpdateMouse@{UpdateMouse}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{UpdateMouse()}{UpdateMouse()}}
+{\footnotesize\ttfamily void Camera\+::\+Update\+Mouse (\begin{DoxyParamCaption}\item[{double}]{xpos,  }\item[{double}]{ypos }\end{DoxyParamCaption})}
+
+
+
+Aktualizacja pozycji myszy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em xpos} & pozycja x kamery \\
+\hline
+{\em ypos} & pozycja y kamery \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_camera_a8d4bed6c09bbae34e8634a7f65401fc1}\label{class_camera_a8d4bed6c09bbae34e8634a7f65401fc1}} 
+\index{Camera@{Camera}!VerticalMove@{VerticalMove}}
+\index{VerticalMove@{VerticalMove}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{VerticalMove()}{VerticalMove()}}
+{\footnotesize\ttfamily void Camera\+::\+Vertical\+Move (\begin{DoxyParamCaption}\item[{bool}]{is\+Up,  }\item[{float}]{camera\+Speed }\end{DoxyParamCaption})}
+
+
+
+Funkcja ruchu wertykalnego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em is\+Up} & czy kamera w górę \\
+\hline
+{\em camera\+Speed} & prędkość kamery \\
+\hline
+\end{DoxyParams}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+Camera.\+h\item 
+Camera.\+cpp\end{DoxyCompactItemize}

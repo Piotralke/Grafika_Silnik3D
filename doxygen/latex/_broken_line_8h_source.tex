@@ -1,0 +1,44 @@
+\hypertarget{_broken_line_8h_source}{}\doxysection{Broken\+Line.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef brokenline\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define brokenlineh\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}glad/glad.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}GLFW/glfw3.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_broken_line}{BrokenLine}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{18     \textcolor{keywordtype}{float} vertices[6];}
+\DoxyCodeLine{19     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} VBO, VAO;}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_broken_line_a2a473ee5403f91e6dcb9ff7c842b5204}{BrokenLine}}(\textcolor{keywordtype}{float} vertices[])}
+\DoxyCodeLine{27     \{}
+\DoxyCodeLine{28         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 6; i++)}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             this-\/>vertices[i] = vertices[i];}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32         glGenVertexArrays(1, \&VAO);}
+\DoxyCodeLine{33         glGenBuffers(1, \&VBO);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         glBindVertexArray(VAO);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         glBindBuffer(GL\_ARRAY\_BUFFER, VBO);}
+\DoxyCodeLine{38         glBufferData(GL\_ARRAY\_BUFFER, \textcolor{keyword}{sizeof}(this-\/>vertices), this-\/>vertices, GL\_STATIC\_DRAW);}
+\DoxyCodeLine{39         }
+\DoxyCodeLine{40         glVertexAttribPointer(0, 3, GL\_FLOAT, GL\_FALSE, 3 * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{41         glEnableVertexAttribArray(0);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         glBindBuffer(GL\_ARRAY\_BUFFER, 0);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         glBindVertexArray(0);}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_broken_line_a14d29e96e2b1df74ad8486751b12328f}{draw}}();}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_broken_line_af6931fbea550f5a7d1dc00f8c8fc2a92}{setVertices}}(\textcolor{keywordtype}{float} vertices[]);}
+\DoxyCodeLine{63     \textcolor{keywordtype}{float}* \mbox{\hyperlink{class_broken_line_ac3aab6a661cc532397fe245cca15829c}{getVertices}}();}
+\DoxyCodeLine{64 \};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !brokenline\_h}}
+
+\end{DoxyCode}

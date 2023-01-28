@@ -5,12 +5,21 @@
 #include "glm/glm.hpp"
 #include "GLFW/glfw3.h"
 
+/**
+ * @brief Klasa odpowiedzialna za tworzenie trójkąta
+ * 
+ */
 class Triangle
 {
 private:
 	float vertices[9];
 	unsigned int VBO, VAO;
 public:
+/**
+ * @brief Konstruktor klasy Triangle
+ * 
+ * @param vertices 
+ */
 	Triangle(float vertices[])
 	{
 		for(int i = 0; i < 9; i++)
@@ -31,8 +40,22 @@ public:
 
 		glBindVertexArray(0);
 	}
+	/**
+	 * @brief Funckja rysująca trójkąt na ekranie
+	 * 
+	 */
 	void draw();
+	/**
+	 * @brief Ustawienie wierzchołków trójkąta
+	 * 
+	 * @param vertices tablica wierzchołków trójkąta
+	 */
 	void setVertices(float vertices[]);
+	/**
+	 * @brief Pobranie wierzchołków trójkata
+	 * 
+	 * @return float* - zwrócenie wierzchołków trójkąta
+	 */
 	float* getVertices();
 };
 

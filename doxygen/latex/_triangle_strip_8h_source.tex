@@ -1,0 +1,61 @@
+\hypertarget{_triangle_strip_8h_source}{}\doxysection{Triangle\+Strip.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef trianglestrip\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define trianglestrip\_h}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}glad/glad.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}GLFW/glfw3.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <iterator>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_triangle_strip}{TriangleStrip}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{21     std::vector<float> vertices;}
+\DoxyCodeLine{26     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} VBO, VAO, EBO;}
+\DoxyCodeLine{31     \textcolor{keywordtype}{int} n;}
+\DoxyCodeLine{32 \textcolor{keyword}{public}:}
+\DoxyCodeLine{39     \mbox{\hyperlink{class_triangle_strip_a5e02f3c700d43695e4028275d2d58d8b}{TriangleStrip}}(\textcolor{keywordtype}{float} vertices[],\textcolor{keywordtype}{int} size)}
+\DoxyCodeLine{40     \{}
+\DoxyCodeLine{41         n = size;}
+\DoxyCodeLine{42         std::cout << n << std::endl;}
+\DoxyCodeLine{43         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < n; i++)}
+\DoxyCodeLine{44         \{}
+\DoxyCodeLine{45             this-\/>vertices.push\_back(vertices[i]);}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47         }
+\DoxyCodeLine{48         glGenVertexArrays(1, \&VAO);}
+\DoxyCodeLine{49         glGenBuffers(1, \&VBO);}
+\DoxyCodeLine{50         glGenBuffers(1, \&EBO);}
+\DoxyCodeLine{51         \textcolor{keywordtype}{float}* fVertices = this-\/>vertices.data();}
+\DoxyCodeLine{52         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < n; i++)}
+\DoxyCodeLine{53         \{}
+\DoxyCodeLine{54             std::cout << fVertices[i] << std::endl;}
+\DoxyCodeLine{55         \}}
+\DoxyCodeLine{56         glBindVertexArray(VAO);}
+\DoxyCodeLine{57         glBindBuffer(GL\_ARRAY\_BUFFER, VBO);}
+\DoxyCodeLine{58         glBufferData(GL\_ARRAY\_BUFFER, 4*n, fVertices, GL\_STATIC\_DRAW);}
+\DoxyCodeLine{59         \textcolor{comment}{//unsigned int indices[] = \{}}
+\DoxyCodeLine{60         \textcolor{comment}{//0, 1, 3,}}
+\DoxyCodeLine{61         \textcolor{comment}{//1, 2, 3}}
+\DoxyCodeLine{62         \textcolor{comment}{//\};}}
+\DoxyCodeLine{63         \textcolor{comment}{//glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER, EBO);}}
+\DoxyCodeLine{64         \textcolor{comment}{//glBufferData(GL\_ELEMENT\_ARRAY\_BUFFER, sizeof(indices), indices, GL\_STATIC\_DRAW);}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66         glVertexAttribPointer(0, 3, GL\_FLOAT, GL\_FALSE, 3 * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{67         glEnableVertexAttribArray(0);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         glBindBuffer(GL\_ARRAY\_BUFFER, 0);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         glBindVertexArray(0);}
+\DoxyCodeLine{72         \textcolor{comment}{//glPolygonMode(GL\_FRONT\_AND\_BACK, GL\_LINE);}}
+\DoxyCodeLine{73     \}}
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_triangle_strip_a5ad1b9d36a7bbb956002123836171d15}{draw}}();}
+\DoxyCodeLine{84     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_triangle_strip_a20d1791d4379540be50d49eab3145a69}{setVertices}}(\textcolor{keywordtype}{float} vertices[]);}
+\DoxyCodeLine{90     \textcolor{keywordtype}{float}* \mbox{\hyperlink{class_triangle_strip_aec3c3ee2ab0c28229d940809d89f00e4}{getVertices}}();}
+\DoxyCodeLine{91 \};}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !trianglefan\_h}}
+
+\end{DoxyCode}

@@ -12,27 +12,67 @@
 #include "BitmapHandler.h"
 #include <time.h>
 #include <filesystem>
-
+/**
+ * @brief Metoda wyzwalająca callback myszki
+ * 
+ * @param window okno aplikacji
+ * @param xpos pozycja x myszy
+ * @param ypos pozycja y myszy
+ */
 void MouseCallback(GLFWwindow* window, double xpos, double ypos);
+/**
+ * @brief Metoda wyzwalająca callback lkawiatury
+ * 
+ * @param window kno aplikacji
+ * @param button przycisk
+ * @param action akcja
+ * @param mods tryb wciśnięcia
+ */
 void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+/**
+ * @brief Metoda sprawdzająca kolizję
+ * 
+ * @param ob1 objekt 1
+ * @param ob2 objekt 2
+ * @return true jesli wystąpi kolizja
+ * @return false jeśli nie będzie kolizji
+ */
 bool checkCollision(Cube ob1, Cube ob2);
+/**
+ * @brief główna klasa Engine
+ * 
+ */
 class Engine
 {
 private:
+	/*!<Wskaźnik na kamerę*/
 	Camera* camera;
+	/*!<Wskaźnik na handlera bitmap*/
 	BitmapHandler* bitmapHandler;
+	/*!<Wskaźnik na intancję silnika*/
 	static Engine* instance;
+	/*!<Wskaźnik na okno aplikacji*/
 	GLFWwindow* window;
+	/*!<Wskaźnik na monitor*/
 	GLFWmonitor* monitor;
+	/*<! Szerokość ekranu*/
 	unsigned int screenWidth;
+	/*!<Wysokość ekranu*/
 	unsigned int screenHeight;
+	/*!<Czas pomiędzy klatkami*/
 	float deltaTime;
+	/*<!Czas ostatniej klatki*/
 	float lastFrame;
+	/*!<Macierz projekcji*/
 	glm::mat4 projection;
+	/*!<Kolor tła*/
 	glm::vec4 backgroundColor = glm::vec4(0.0f,0.0f,1.0f,0.1f);
+	/*!<wektor sześcianów*/
 	std::vector<Cube> cubesVector;
+	/*!<Wektor celów*/
 	std::vector<Cube> targetVector;
 
+	/*!<Vertex Shader*/
 	const char *vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
 		"layout (location = 1) in vec2 aTexCoord;\n"
@@ -45,6 +85,7 @@ private:
     	"   gl_Position = projection*view*model*vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
 		"TexCoord = vec2(aTexCoord.x, aTexCoord.y);\n"
     	"}\0";
+	/*!<Fragment Shader*/
 	const char *fragmentShaderSource ="#version 330 core\n"
 		"out vec4 FragColor;\n"
 		"in vec2 TexCoord;\n"
@@ -53,7 +94,7 @@ private:
     	"{\n"
     	"  FragColor = texture(texture1, TexCoord);\n"
 		"}\0";
-
+	/*!<Vertex Lightning Shader*/
 	const char* vertexLightningShaderSource = "#version 330 core\n"
 		"layout(location = 0) in vec3 aPos;"
 		"layout(location = 1) in vec3 aNormal;\n"
@@ -72,6 +113,7 @@ private:
 		"TexCoords = aTexCoords;\n"
 		"gl_Position = projection * view * vec4(FragPos, 1.0);\n"
 		"}\0";
+		/*!<Fragment lightning shader*/
 	const char* fragmentLightningShaderSource = "#version 330 core\n"
 		"out vec4 FragColor;\n"
 		"struct Material {\n"
@@ -107,7 +149,7 @@ private:
 		"vec3 result = ambient + diffuse + specular;\n"
 		"FragColor = vec4(result, 1.0);\n"
 		"}\0";
-
+	
 		unsigned int vertexShader;
 		unsigned int fragmentShader;
 		unsigned int programShader2;
@@ -115,7 +157,19 @@ private:
 		unsigned int vertexLightningShader;
 		unsigned int fragmentLightningShader;
 public:
+/**
+ * @brief 
+ * Vector przechowujący pociski
+ */
 	std::vector<Bullet> bulletsVector;
+	/**
+	 * @brief Konstruktor klasy Engine
+	 * 
+	 * @param width szerokość
+	 * @param height wysokość
+	 * @param Title tytuł okna
+	 * @param monitor wskaźnik na monitor
+	 */
 	Engine(unsigned int width, unsigned int height, std::string Title, GLFWmonitor* monitor)
 	{
 		
@@ -198,21 +252,71 @@ public:
 		glfwSetCursorPosCallback(window, MouseCallback);
 		
 	}
+	/**
+	 * @brief ustawia rozmiar ekranu 
+	 * 
+	 * @param width szerokość okna
+	 * @param height wysokość okna
+	 */
 	void setWindowSize(unsigned int width, unsigned int height);
+	/**
+	 * @brief przełącza pełny ekran
+	 * 
+	 * @param fullscreen czy włączyć czy wyłączyć
+	 */
 	void isFullscreen(bool fullscreen);
+	/**
+	 * @brief inicjacja silnika
+	 * 
+	 */
 	void init();
+	/**
+	 * @brief przetwarzanie urządzeń wejścia
+	 * 
+	 */
 	void processInput();
+	/**
+	 * @brief główna pętla gry
+	 * 
+	 */
 	void mainLoop();
+	/**
+	 * @brief Ustawia kolor tła
+	 * 
+	 * @param r intensywność czerwonego
+	 * @param g intensywność zielonego
+	 * @param b intensywność niebieskiego
+	 * @param a kanał alfa
+	 */
 	void setBackgroundColor(float r,float g,float b,float a);
+	/**
+	 * @brief generowanie sześcianów
+	 * 
+	 */
 	void generateCube();
+	/**
+	 * @brief pobieranie instancji klasy
+	 * 
+	 * @return wskaźnik na klasę engine 
+	 */
 	static Engine* getInstance()
 	{
 		return instance;
 	}
+	/**
+	 * @brief pobieranie wskaźnika na kamerę
+	 * 
+	 * @return wskaźnik na kamerę 
+	 */
 	Camera* getCamera()
 	{
 		return camera;
 	}
+	/**
+	 * @brief pobieranie wskaźnika na okno
+	 * 
+	 * @return wskaźnik na okno 
+	 */
 	GLFWwindow* getWindow();
 };
 #endif // !engine_h

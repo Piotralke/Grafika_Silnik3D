@@ -1,0 +1,223 @@
+\hypertarget{engine_8h_source}{}\doxysection{engine.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef engine\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define engine\_h}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Bullet.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Point3D.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Triangle.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Rectangle.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Line.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}TriangleStrip.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Camera.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}BitmapHandler.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <time.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <filesystem>}}
+\DoxyCodeLine{22 \textcolor{keywordtype}{void} MouseCallback(GLFWwindow* window, \textcolor{keywordtype}{double} xpos, \textcolor{keywordtype}{double} ypos);}
+\DoxyCodeLine{31 \textcolor{keywordtype}{void} MouseButtonCallback(GLFWwindow* window, \textcolor{keywordtype}{int} button, \textcolor{keywordtype}{int} action, \textcolor{keywordtype}{int} mods);}
+\DoxyCodeLine{40 \textcolor{keywordtype}{bool} checkCollision(\mbox{\hyperlink{class_cube}{Cube}} ob1, \mbox{\hyperlink{class_cube}{Cube}} ob2);}
+\DoxyCodeLine{45 \textcolor{keyword}{class }\mbox{\hyperlink{class_engine}{Engine}}}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47 \textcolor{keyword}{private}:}
+\DoxyCodeLine{49     \mbox{\hyperlink{class_camera}{Camera}}* camera;}
+\DoxyCodeLine{51     \mbox{\hyperlink{class_bitmap_handler}{BitmapHandler}}* bitmapHandler;}
+\DoxyCodeLine{53     \textcolor{keyword}{static} \mbox{\hyperlink{class_engine}{Engine}}* instance;}
+\DoxyCodeLine{55     GLFWwindow* window;}
+\DoxyCodeLine{57     GLFWmonitor* monitor;}
+\DoxyCodeLine{58     \textcolor{comment}{/*<! Szerokość ekranu*/}}
+\DoxyCodeLine{59     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} screenWidth;}
+\DoxyCodeLine{61     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} screenHeight;}
+\DoxyCodeLine{63     \textcolor{keywordtype}{float} deltaTime;}
+\DoxyCodeLine{64     \textcolor{comment}{/*<!Czas ostatniej klatki*/}}
+\DoxyCodeLine{65     \textcolor{keywordtype}{float} lastFrame;}
+\DoxyCodeLine{67     glm::mat4 projection;}
+\DoxyCodeLine{69     glm::vec4 backgroundColor = glm::vec4(0.0f,0.0f,1.0f,0.1f);}
+\DoxyCodeLine{71     std::vector<Cube> cubesVector;}
+\DoxyCodeLine{73     std::vector<Cube> targetVector;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{76     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *vertexShaderSource = \textcolor{stringliteral}{"{}\#version 330 core\(\backslash\)n"{}}}
+\DoxyCodeLine{77         \textcolor{stringliteral}{"{}layout (location = 0) in vec3 aPos;\(\backslash\)n"{}}}
+\DoxyCodeLine{78         \textcolor{stringliteral}{"{}layout (location = 1) in vec2 aTexCoord;\(\backslash\)n"{}}}
+\DoxyCodeLine{79         \textcolor{stringliteral}{"{}out vec2 TexCoord;\(\backslash\)n"{}}}
+\DoxyCodeLine{80         \textcolor{stringliteral}{"{}uniform mat4 model;\(\backslash\)n"{}}}
+\DoxyCodeLine{81         \textcolor{stringliteral}{"{}uniform mat4 view;\(\backslash\)n"{}}}
+\DoxyCodeLine{82         \textcolor{stringliteral}{"{}uniform mat4 projection;\(\backslash\)n"{}}}
+\DoxyCodeLine{83         \textcolor{stringliteral}{"{}void main()\(\backslash\)n"{}}}
+\DoxyCodeLine{84         \textcolor{stringliteral}{"{}\{\(\backslash\)n"{}}}
+\DoxyCodeLine{85         \textcolor{stringliteral}{"{}   gl\_Position = projection*view*model*vec4(aPos.x, aPos.y, aPos.z, 1.0);\(\backslash\)n"{}}}
+\DoxyCodeLine{86         \textcolor{stringliteral}{"{}TexCoord = vec2(aTexCoord.x, aTexCoord.y);\(\backslash\)n"{}}}
+\DoxyCodeLine{87         \textcolor{stringliteral}{"{}\}\(\backslash\)0"{}};}
+\DoxyCodeLine{89     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *fragmentShaderSource =\textcolor{stringliteral}{"{}\#version 330 core\(\backslash\)n"{}}}
+\DoxyCodeLine{90         \textcolor{stringliteral}{"{}out vec4 FragColor;\(\backslash\)n"{}}}
+\DoxyCodeLine{91         \textcolor{stringliteral}{"{}in vec2 TexCoord;\(\backslash\)n"{}}}
+\DoxyCodeLine{92         \textcolor{stringliteral}{"{}uniform sampler2D texture1;\(\backslash\)n"{}}}
+\DoxyCodeLine{93         \textcolor{stringliteral}{"{}void main()\(\backslash\)n"{}}}
+\DoxyCodeLine{94         \textcolor{stringliteral}{"{}\{\(\backslash\)n"{}}}
+\DoxyCodeLine{95         \textcolor{stringliteral}{"{}  FragColor = texture(texture1, TexCoord);\(\backslash\)n"{}}}
+\DoxyCodeLine{96         \textcolor{stringliteral}{"{}\}\(\backslash\)0"{}};}
+\DoxyCodeLine{98     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* vertexLightningShaderSource = \textcolor{stringliteral}{"{}\#version 330 core\(\backslash\)n"{}}}
+\DoxyCodeLine{99         \textcolor{stringliteral}{"{}layout(location = 0) in vec3 aPos;"{}}}
+\DoxyCodeLine{100         \textcolor{stringliteral}{"{}layout(location = 1) in vec3 aNormal;\(\backslash\)n"{}}}
+\DoxyCodeLine{101         \textcolor{stringliteral}{"{}layout(location = 2) in vec2 aTexCoords;\(\backslash\)n"{}}}
+\DoxyCodeLine{102         \textcolor{stringliteral}{"{}out vec3 FragPos;\(\backslash\)n"{}}}
+\DoxyCodeLine{103         \textcolor{stringliteral}{"{}out vec2 TexCoords;\(\backslash\)n"{}}}
+\DoxyCodeLine{104         \textcolor{stringliteral}{"{}out vec3 Normal;\(\backslash\)n"{}}}
+\DoxyCodeLine{105         \textcolor{stringliteral}{"{}uniform mat4 model;\(\backslash\)n"{}}}
+\DoxyCodeLine{106         \textcolor{stringliteral}{"{}uniform mat4 view;\(\backslash\)n"{}}}
+\DoxyCodeLine{107         \textcolor{stringliteral}{"{}uniform mat4 projection;\(\backslash\)n"{}}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109         \textcolor{stringliteral}{"{}void main()\(\backslash\)n"{}}}
+\DoxyCodeLine{110         \textcolor{stringliteral}{"{}\{\(\backslash\)n"{}}}
+\DoxyCodeLine{111         \textcolor{stringliteral}{"{}FragPos = vec3(model * vec4(aPos, 1.0));\(\backslash\)n"{}}}
+\DoxyCodeLine{112         \textcolor{stringliteral}{"{}Normal = mat3(transpose(inverse(model))) * aNormal;\(\backslash\)n"{}}}
+\DoxyCodeLine{113         \textcolor{stringliteral}{"{}TexCoords = aTexCoords;\(\backslash\)n"{}}}
+\DoxyCodeLine{114         \textcolor{stringliteral}{"{}gl\_Position = projection * view * vec4(FragPos, 1.0);\(\backslash\)n"{}}}
+\DoxyCodeLine{115         \textcolor{stringliteral}{"{}\}\(\backslash\)0"{}};}
+\DoxyCodeLine{117     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fragmentLightningShaderSource = \textcolor{stringliteral}{"{}\#version 330 core\(\backslash\)n"{}}}
+\DoxyCodeLine{118         \textcolor{stringliteral}{"{}out vec4 FragColor;\(\backslash\)n"{}}}
+\DoxyCodeLine{119         \textcolor{stringliteral}{"{}struct Material \{\(\backslash\)n"{}}}
+\DoxyCodeLine{120         \textcolor{stringliteral}{"{}sampler2D diffuse;\(\backslash\)n"{}}}
+\DoxyCodeLine{121         \textcolor{stringliteral}{"{}vec3 specular;\(\backslash\)n"{}}}
+\DoxyCodeLine{122         \textcolor{stringliteral}{"{}float shininess;\(\backslash\)n"{}}}
+\DoxyCodeLine{123         \textcolor{stringliteral}{"{}\};\(\backslash\)n"{}}}
+\DoxyCodeLine{124         \textcolor{stringliteral}{"{}struct Light \{\(\backslash\)n"{}}}
+\DoxyCodeLine{125         \textcolor{stringliteral}{"{}vec3 position;\(\backslash\)n"{}}}
+\DoxyCodeLine{126         \textcolor{stringliteral}{"{}vec3 ambient;\(\backslash\)n"{}}}
+\DoxyCodeLine{127         \textcolor{stringliteral}{"{}vec3 diffuse;\(\backslash\)n"{}}}
+\DoxyCodeLine{128         \textcolor{stringliteral}{"{}vec3 specular;\(\backslash\)n"{}}}
+\DoxyCodeLine{129         \textcolor{stringliteral}{"{}\};\(\backslash\)n"{}}}
+\DoxyCodeLine{130         \textcolor{stringliteral}{"{}in vec3 FragPos;\(\backslash\)n"{}}}
+\DoxyCodeLine{131         \textcolor{stringliteral}{"{}in vec3 Normal;\(\backslash\)n"{}}}
+\DoxyCodeLine{132         \textcolor{stringliteral}{"{}in vec2 TexCoords;\(\backslash\)n"{}}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134         \textcolor{stringliteral}{"{}uniform vec3 viewPos;\(\backslash\)n"{}}}
+\DoxyCodeLine{135         \textcolor{stringliteral}{"{}uniform Material material;\(\backslash\)n"{}}}
+\DoxyCodeLine{136         \textcolor{stringliteral}{"{}uniform Light light;\(\backslash\)n"{}}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138         \textcolor{stringliteral}{"{}void main()\(\backslash\)n"{}}}
+\DoxyCodeLine{139         \textcolor{stringliteral}{"{}\{\(\backslash\)n"{}}}
+\DoxyCodeLine{140         \textcolor{stringliteral}{"{}vec3 ambient = light.ambient * texture(material.diffuse, TexCoords).rgb;\(\backslash\)n"{}}}
+\DoxyCodeLine{141         \textcolor{stringliteral}{"{}vec3 norm = normalize(Normal);\(\backslash\)n"{}}}
+\DoxyCodeLine{142         \textcolor{stringliteral}{"{}vec3 lightDir = normalize(light.position -\/ FragPos);\(\backslash\)n"{}}}
+\DoxyCodeLine{143         \textcolor{stringliteral}{"{}float diff = max(dot(norm, lightDir), 0.0);\(\backslash\)n"{}}}
+\DoxyCodeLine{144         \textcolor{stringliteral}{"{}vec3 diffuse = light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;\(\backslash\)n"{}}}
+\DoxyCodeLine{145         \textcolor{stringliteral}{"{}vec3 viewDir = normalize(viewPos -\/ FragPos);\(\backslash\)n"{}}}
+\DoxyCodeLine{146         \textcolor{stringliteral}{"{}vec3 reflectDir = reflect(-\/lightDir, norm);\(\backslash\)n"{}}}
+\DoxyCodeLine{147         \textcolor{stringliteral}{"{}float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess); \(\backslash\)n"{}}}
+\DoxyCodeLine{148         \textcolor{stringliteral}{"{}vec3 specular = light.specular * (spec * material.specular); \(\backslash\)n"{}}}
+\DoxyCodeLine{149         \textcolor{stringliteral}{"{}vec3 result = ambient + diffuse + specular;\(\backslash\)n"{}}}
+\DoxyCodeLine{150         \textcolor{stringliteral}{"{}FragColor = vec4(result, 1.0);\(\backslash\)n"{}}}
+\DoxyCodeLine{151         \textcolor{stringliteral}{"{}\}\(\backslash\)0"{}};}
+\DoxyCodeLine{152     }
+\DoxyCodeLine{153         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vertexShader;}
+\DoxyCodeLine{154         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} fragmentShader;}
+\DoxyCodeLine{155         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} programShader2;}
+\DoxyCodeLine{156         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} VBO, VAO;}
+\DoxyCodeLine{157         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vertexLightningShader;}
+\DoxyCodeLine{158         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} fragmentLightningShader;}
+\DoxyCodeLine{159 \textcolor{keyword}{public}:}
+\DoxyCodeLine{164     std::vector<Bullet> \mbox{\hyperlink{class_engine_ac20051580358250b61d636b639530d8c}{bulletsVector}};}
+\DoxyCodeLine{173     \mbox{\hyperlink{class_engine_a7d8a59a55144db95f88e0582d88ec064}{Engine}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height, std::string Title, GLFWmonitor* monitor)}
+\DoxyCodeLine{174     \{}
+\DoxyCodeLine{175         }
+\DoxyCodeLine{176         this-\/>instance = \textcolor{keyword}{this};}
+\DoxyCodeLine{177         glfwInit();}
+\DoxyCodeLine{178         glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MAJOR, 3);}
+\DoxyCodeLine{179         glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MINOR, 3);}
+\DoxyCodeLine{180         glfwWindowHint(GLFW\_OPENGL\_PROFILE, GLFW\_OPENGL\_CORE\_PROFILE);}
+\DoxyCodeLine{181         \textcolor{comment}{//glEnable(GL\_DEPTH\_TEST);}}
+\DoxyCodeLine{182         this-\/>window = glfwCreateWindow(width, height, Title.c\_str(), monitor, NULL);}
+\DoxyCodeLine{183         \textcolor{keywordflow}{if} (window == NULL)}
+\DoxyCodeLine{184         \{}
+\DoxyCodeLine{185             std::cout << \textcolor{stringliteral}{"{}Failed to create GLFW window"{}} << std::endl;}
+\DoxyCodeLine{186             glfwTerminate();}
+\DoxyCodeLine{187         \}}
+\DoxyCodeLine{188         \mbox{\hyperlink{class_engine_ab44d76e2ff6057e73d6210cf9af0d89e}{init}}();}
+\DoxyCodeLine{189         }
+\DoxyCodeLine{190         \textcolor{keywordtype}{int} success;}
+\DoxyCodeLine{191         \textcolor{keywordtype}{char} infoLog[512];}
+\DoxyCodeLine{192         vertexShader = glCreateShader(GL\_VERTEX\_SHADER);}
+\DoxyCodeLine{193         glEnable(GL\_DEPTH\_TEST);}
+\DoxyCodeLine{194         glShaderSource(vertexShader, 1, \&vertexShaderSource, NULL);}
+\DoxyCodeLine{195         glCompileShader(vertexShader);}
+\DoxyCodeLine{196         glGetShaderiv(vertexShader, GL\_COMPILE\_STATUS, \&success);}
+\DoxyCodeLine{197         \textcolor{keywordflow}{if} (!success)}
+\DoxyCodeLine{198         \{}
+\DoxyCodeLine{199             glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);}
+\DoxyCodeLine{200             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::VERTEX::COMPILATION\_FAILED\(\backslash\)n"{}} << infoLog << std::endl;}
+\DoxyCodeLine{201         \}}
+\DoxyCodeLine{202         fragmentShader = glCreateShader(GL\_FRAGMENT\_SHADER);}
+\DoxyCodeLine{203         glShaderSource(fragmentShader,1,\&fragmentShaderSource,NULL);}
+\DoxyCodeLine{204         glCompileShader(fragmentShader);}
+\DoxyCodeLine{205         glGetShaderiv(fragmentShader, GL\_COMPILE\_STATUS, \&success);}
+\DoxyCodeLine{206         \textcolor{keywordflow}{if} (!success)}
+\DoxyCodeLine{207         \{}
+\DoxyCodeLine{208             glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);}
+\DoxyCodeLine{209             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::FRAGMENT::COMPILATION\_FAILED\(\backslash\)n"{}} << infoLog << std::endl;}
+\DoxyCodeLine{210         \}}
+\DoxyCodeLine{211         vertexLightningShader = glCreateShader(GL\_VERTEX\_SHADER);}
+\DoxyCodeLine{212         glShaderSource(vertexLightningShader, 1, \&vertexLightningShaderSource, NULL);}
+\DoxyCodeLine{213         glCompileShader(vertexLightningShader);}
+\DoxyCodeLine{214         glGetShaderiv(vertexLightningShader, GL\_COMPILE\_STATUS, \&success);}
+\DoxyCodeLine{215         \textcolor{keywordflow}{if} (!success)}
+\DoxyCodeLine{216         \{}
+\DoxyCodeLine{217             glGetShaderInfoLog(vertexLightningShader, 512, NULL, infoLog);}
+\DoxyCodeLine{218             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::VERTEX::COMPILATION\_FAILED\(\backslash\)n"{}} << infoLog << std::endl;}
+\DoxyCodeLine{219         \}}
+\DoxyCodeLine{220         fragmentLightningShader = glCreateShader(GL\_FRAGMENT\_SHADER);}
+\DoxyCodeLine{221         glShaderSource(fragmentLightningShader, 1, \&fragmentLightningShaderSource, NULL);}
+\DoxyCodeLine{222         glCompileShader(fragmentLightningShader);}
+\DoxyCodeLine{223         glGetShaderiv(fragmentLightningShader, GL\_COMPILE\_STATUS, \&success);}
+\DoxyCodeLine{224         \textcolor{keywordflow}{if} (!success)}
+\DoxyCodeLine{225         \{}
+\DoxyCodeLine{226             glGetShaderInfoLog(fragmentLightningShader, 512, NULL, infoLog);}
+\DoxyCodeLine{227             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::VERTEX::COMPILATION\_FAILED\(\backslash\)n"{}} << infoLog << std::endl;}
+\DoxyCodeLine{228         \}}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230         programShader2 = glCreateProgram();}
+\DoxyCodeLine{231         glAttachShader(programShader2, vertexLightningShader);}
+\DoxyCodeLine{232         glAttachShader(programShader2, fragmentLightningShader);}
+\DoxyCodeLine{233         glLinkProgram(programShader2);}
+\DoxyCodeLine{234         glGetProgramiv(programShader2, GL\_LINK\_STATUS, \&success);}
+\DoxyCodeLine{235         \textcolor{keywordflow}{if} (!success) \{}
+\DoxyCodeLine{236             glGetProgramInfoLog(programShader2, 512, NULL, infoLog);}
+\DoxyCodeLine{237             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::PROGRAM::LINKING\_FAILED\(\backslash\)n"{}} << infoLog << std::endl;}
+\DoxyCodeLine{238         \}}
+\DoxyCodeLine{239         glDeleteShader(vertexShader);}
+\DoxyCodeLine{240         glDeleteShader(fragmentShader);}
+\DoxyCodeLine{241         glDeleteShader(vertexLightningShader);}
+\DoxyCodeLine{242         glDeleteShader(fragmentLightningShader);}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244         }
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246         glfwSetInputMode(window, GLFW\_CURSOR, GLFW\_CURSOR\_DISABLED);}
+\DoxyCodeLine{247         this-\/>screenHeight = height;}
+\DoxyCodeLine{248         this-\/>screenWidth = width;}
+\DoxyCodeLine{249         this-\/>monitor = monitor;}
+\DoxyCodeLine{250         camera = \textcolor{keyword}{new} \mbox{\hyperlink{class_camera}{Camera}}(width, height,programShader2,programShader2, window);}
+\DoxyCodeLine{251         glfwSetMouseButtonCallback(window, MouseButtonCallback);}
+\DoxyCodeLine{252         glfwSetCursorPosCallback(window, MouseCallback);}
+\DoxyCodeLine{253         }
+\DoxyCodeLine{254     \}}
+\DoxyCodeLine{261     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a755095a948bc7b400a7164ca9c8fe876}{setWindowSize}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{267     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a867b1384af8bf34749a32e8e7a46f62f}{isFullscreen}}(\textcolor{keywordtype}{bool} fullscreen);}
+\DoxyCodeLine{272     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ab44d76e2ff6057e73d6210cf9af0d89e}{init}}();}
+\DoxyCodeLine{277     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_aa1aec35d59f1364a79c7a62c29640226}{processInput}}();}
+\DoxyCodeLine{282     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a25ad610aaf59ae357c28796f75cfa3e0}{mainLoop}}();}
+\DoxyCodeLine{291     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a41cb5f12454927da08dd45f8c3aa8c2b}{setBackgroundColor}}(\textcolor{keywordtype}{float} r,\textcolor{keywordtype}{float} g,\textcolor{keywordtype}{float} b,\textcolor{keywordtype}{float} a);}
+\DoxyCodeLine{296     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a7d7521f22d0d4f5dbea29ecb411f530f}{generateCube}}();}
+\DoxyCodeLine{302     \textcolor{keyword}{static} \mbox{\hyperlink{class_engine}{Engine}}* \mbox{\hyperlink{class_engine_a96375b36ffad031d151165a250336d5f}{getInstance}}()}
+\DoxyCodeLine{303     \{}
+\DoxyCodeLine{304         \textcolor{keywordflow}{return} instance;}
+\DoxyCodeLine{305     \}}
+\DoxyCodeLine{311     \mbox{\hyperlink{class_camera}{Camera}}* \mbox{\hyperlink{class_engine_a34988d3f3e68a19b438b02eb009e147b}{getCamera}}()}
+\DoxyCodeLine{312     \{}
+\DoxyCodeLine{313         \textcolor{keywordflow}{return} camera;}
+\DoxyCodeLine{314     \}}
+\DoxyCodeLine{320     GLFWwindow* \mbox{\hyperlink{class_engine_aee74e4ad8c03c700aeeb74f349c2d7d4}{getWindow}}();}
+\DoxyCodeLine{321 \};}
+\DoxyCodeLine{322 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !engine\_h}}
+
+\end{DoxyCode}

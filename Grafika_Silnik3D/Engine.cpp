@@ -110,9 +110,17 @@ void Engine::mainLoop()
 	glm::vec3 pos5(-1.5f, 10.0f, -30.0f); //front
 	glm::vec3 pos6(-1.5f, 10.0f, 30.0f); //back
 	glm::vec3 pos7(-30.0f, 10.0f, 0.0f); //left
-	glm::vec3 pos8(27.0f, 10.0f, 0.0f); //right
+	glm::vec3 pos8(27.0f, 10.0f, 0.0f); 
+	glm::vec3 pos10(-10.0f, 0.0f, 15.0f); 
+	glm::vec3 pos11(-5.0f, 0.0f, 15.0f); 
+	glm::vec3 pos12(5.0f, 0.0f, 15.0f);
+	glm::vec3 pos13(10.0f, 0.0f, 15.0f);
 	Cube aim(pos, red);
 	Cube hitbox(pos, red);
+	Cube pcube(pos10, red);
+	Cube jcube(pos11, red);
+	Cube scube(pos12, red);
+	Cube gbcube(pos13, red);
     Point3D point(vertices2);
     Triangle triangle(vertices);
 	Rectangle rectangle(vertices3);
@@ -152,11 +160,39 @@ void Engine::mainLoop()
 	std::string texPathWall3 = "\\resources\\textures\\aim.jpg";
 	unsigned int aimT = bitmapHandler->loadTexture((parentDir + texPathWall3).c_str());
 
+	std::string texPathWall4 = "\\resources\\textures\\pdziew.jpg";
+	unsigned int piotr = bitmapHandler->loadTexture((parentDir + texPathWall4).c_str());
+
+	std::string texPathWall5 = "\\resources\\textures\\essa.jpg";
+	unsigned int jano = bitmapHandler->loadTexture((parentDir + texPathWall5).c_str());
+
+	std::string texPathWall6 = "\\resources\\textures\\dpych.jpg";
+	unsigned int spychu = bitmapHandler->loadTexture((parentDir + texPathWall6).c_str());
+
+	std::string texPathWall7 = "\\resources\\textures\\gbs.jpg";
+	unsigned int gbs = bitmapHandler->loadTexture((parentDir + texPathWall7).c_str());
+
+	pcube.scale(2);
+	jcube.scale(2);
+	scube.scale(2);
+	gbcube.scale(2);
+	
+	pcube.rotateX(-190);
+	jcube.rotateX(-190);
+	scube.rotateX(-190);
+	gbcube.rotateX(-190);
+
+
+
 	glEnable(GL_TEXTURE_2D);
 	glUseProgram(programShader2);
 	glUniform1i(glGetUniformLocation(programShader2, "material.diffuse"), 0);
     while (!glfwWindowShouldClose(getWindow()))
     {
+		pcube.rotateZ(0.001);
+		jcube.rotateZ(0.001);
+		scube.rotateZ(0.001);
+		gbcube.rotateZ(0.001);
 		glUseProgram(programShader2);
 		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
@@ -183,6 +219,11 @@ void Engine::mainLoop()
 		}
 		glActiveTexture(GL_TEXTURE0);
 		//;
+
+		pcube.draw(programShader2, piotr, 1);
+		jcube.draw(programShader2, jano, 1);
+		scube.draw(programShader2, spychu, 1);
+		gbcube.draw(programShader2, gbs, 1);
 
 		aim.setPosition(camera->getCameraPos()+camera->getCameraFront());
 		hitbox.setPosition(camera->getCameraPos());

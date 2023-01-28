@@ -4,13 +4,25 @@
 #include "glad/glad.h"
 //#include "glm/glm.hpp"
 #include "GLFW/glfw3.h"
-
+/**
+ * @brief Klasa reprezentująca linie
+ * 
+ */
 class Line
 {
 private:
+	/**
+	 * @brief matryca przechowujaca dwa punkty
+	 * 
+	 */
 	float vertices[6];
 	unsigned int VBO, VAO;
 public:
+	/**
+	 * @brief Konstruktor klasy Linia
+ 	 * 
+ 	 * @param vertices Tablica zawierająaca informacje o współrzędnych
+  	 */
 	Line(float vertices[])
 	{
 		for (int i = 0; i < 6; i++)
@@ -32,8 +44,22 @@ public:
 
 		glBindVertexArray(0);
 	}
+	/**
+	 * @brief Funkcja rysująca linie
+	 * 
+	 */
 	void draw();
+	/**
+	 * @brief Ustawnienie współrzędnych dla linii
+	 * 
+	 * @param vertices 
+	 */
 	void setVertices(float vertices[]);
+	/**
+	 * @brief Pobranie współrzędnych linii
+	 * 
+	 * @return float* 
+	 */
 	float* getVertices();
 };
 

@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Grafika Silnik 3D: Dokumentacja klasy Camera</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Grafika Silnik 3D
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="class_camera-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy Camera</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa reprezentująca kamerę  
+ <a href="class_camera.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_camera_8h_source.html">Camera.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a01f94c3543f56ede7af49dc778f19331"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a> ()</td></tr>
+<tr class="memdesc:a01f94c3543f56ede7af49dc778f19331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Domyślny konstruktor klasy kamera.  <a href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Więcej...</a><br /></td></tr>
+<tr class="separator:a01f94c3543f56ede7af49dc778f19331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54d124b3a5b6edf11ab099422a5d5eb3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a54d124b3a5b6edf11ab099422a5d5eb3">Camera</a> (float screenWidth, float screenHeight, unsigned int programShader, unsigned int programShader2, GLFWwindow *window)</td></tr>
+<tr class="memdesc:a54d124b3a5b6edf11ab099422a5d5eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor z parametrami klasy kamera.  <a href="class_camera.html#a54d124b3a5b6edf11ab099422a5d5eb3">Więcej...</a><br /></td></tr>
+<tr class="separator:a54d124b3a5b6edf11ab099422a5d5eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af382ecc8bc0b8064b8c5a525f592fcc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#af382ecc8bc0b8064b8c5a525f592fcc4">UpdateCamera</a> (unsigned int programShader, unsigned int programShader2)</td></tr>
+<tr class="memdesc:af382ecc8bc0b8064b8c5a525f592fcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje pozycje kamery.  <a href="class_camera.html#af382ecc8bc0b8064b8c5a525f592fcc4">Więcej...</a><br /></td></tr>
+<tr class="separator:af382ecc8bc0b8064b8c5a525f592fcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d4bed6c09bbae34e8634a7f65401fc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a8d4bed6c09bbae34e8634a7f65401fc1">VerticalMove</a> (bool isUp, float cameraSpeed)</td></tr>
+<tr class="memdesc:a8d4bed6c09bbae34e8634a7f65401fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja ruchu wertykalnego.  <a href="class_camera.html#a8d4bed6c09bbae34e8634a7f65401fc1">Więcej...</a><br /></td></tr>
+<tr class="separator:a8d4bed6c09bbae34e8634a7f65401fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefce80dca9a64902784298e8d4fb8f23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#aefce80dca9a64902784298e8d4fb8f23">HorizontalMove</a> (bool isRight, float cameraSpeed)</td></tr>
+<tr class="memdesc:aefce80dca9a64902784298e8d4fb8f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja ruchu horyzontalneog.  <a href="class_camera.html#aefce80dca9a64902784298e8d4fb8f23">Więcej...</a><br /></td></tr>
+<tr class="separator:aefce80dca9a64902784298e8d4fb8f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1413c0ad72a928f540702737dfcefd44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a1413c0ad72a928f540702737dfcefd44">UpdateMouse</a> (double xpos, double ypos)</td></tr>
+<tr class="memdesc:a1413c0ad72a928f540702737dfcefd44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizacja pozycji myszy.  <a href="class_camera.html#a1413c0ad72a928f540702737dfcefd44">Więcej...</a><br /></td></tr>
+<tr class="separator:a1413c0ad72a928f540702737dfcefd44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fd979b84ae4959a77a85090976137db"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a9fd979b84ae4959a77a85090976137db">getView</a> ()</td></tr>
+<tr class="memdesc:a9fd979b84ae4959a77a85090976137db"><td class="mdescLeft">&#160;</td><td class="mdescRight">pobranie matrycy view  <a href="class_camera.html#a9fd979b84ae4959a77a85090976137db">Więcej...</a><br /></td></tr>
+<tr class="separator:a9fd979b84ae4959a77a85090976137db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6d97c213564d2523f1c10a4c366ed18"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ab6d97c213564d2523f1c10a4c366ed18">getCameraFront</a> ()</td></tr>
+<tr class="memdesc:ab6d97c213564d2523f1c10a4c366ed18"><td class="mdescLeft">&#160;</td><td class="mdescRight">pobierz pozycję przodu kamery  <a href="class_camera.html#ab6d97c213564d2523f1c10a4c366ed18">Więcej...</a><br /></td></tr>
+<tr class="separator:ab6d97c213564d2523f1c10a4c366ed18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d4b941b2a2017866638391f0b732399"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a3d4b941b2a2017866638391f0b732399">getCameraPos</a> ()</td></tr>
+<tr class="memdesc:a3d4b941b2a2017866638391f0b732399"><td class="mdescLeft">&#160;</td><td class="mdescRight">pobranie pozycji kamery  <a href="class_camera.html#a3d4b941b2a2017866638391f0b732399">Więcej...</a><br /></td></tr>
+<tr class="separator:a3d4b941b2a2017866638391f0b732399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7da7f68dd607a72e463549132437ad5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ad7da7f68dd607a72e463549132437ad5">setCameraPos</a> (glm::vec3 pos)</td></tr>
+<tr class="memdesc:ad7da7f68dd607a72e463549132437ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">ustawienie pozycji kamery  <a href="class_camera.html#ad7da7f68dd607a72e463549132437ad5">Więcej...</a><br /></td></tr>
+<tr class="separator:ad7da7f68dd607a72e463549132437ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p >Klasa reprezentująca kamerę </p>
+</div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="a01f94c3543f56ede7af49dc778f19331" name="a01f94c3543f56ede7af49dc778f19331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f94c3543f56ede7af49dc778f19331">&#9670;&#160;</a></span>Camera() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera::Camera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Domyślny konstruktor klasy kamera. </p>
+
+</div>
+</div>
+<a id="a54d124b3a5b6edf11ab099422a5d5eb3" name="a54d124b3a5b6edf11ab099422a5d5eb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54d124b3a5b6edf11ab099422a5d5eb3">&#9670;&#160;</a></span>Camera() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera::Camera </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>screenWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>screenHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>programShader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>programShader2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLFWwindow *&#160;</td>
+          <td class="paramname"><em>window</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konstruktor z parametrami klasy kamera. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">screenWidth</td><td>szerokość ekranu </td></tr>
+    <tr><td class="paramname">screenHeight</td><td>wysokość ekranu </td></tr>
+    <tr><td class="paramname">programShader</td><td>id shadera 1 </td></tr>
+    <tr><td class="paramname">programShader2</td><td>id shadera 2 </td></tr>
+    <tr><td class="paramname">window</td><td>wskaźnik na okno </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ab6d97c213564d2523f1c10a4c366ed18" name="ab6d97c213564d2523f1c10a4c366ed18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6d97c213564d2523f1c10a4c366ed18">&#9670;&#160;</a></span>getCameraFront()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Camera::getCameraFront </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>pobierz pozycję przodu kamery </p>
+<dl class="section return"><dt>Zwraca</dt><dd>wektor pozycji kamery </dd></dl>
+
+</div>
+</div>
+<a id="a3d4b941b2a2017866638391f0b732399" name="a3d4b941b2a2017866638391f0b732399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d4b941b2a2017866638391f0b732399">&#9670;&#160;</a></span>getCameraPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Camera::getCameraPos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>pobranie pozycji kamery </p>
+<dl class="section return"><dt>Zwraca</dt><dd>wktor pozycji kamery </dd></dl>
+
+</div>
+</div>
+<a id="a9fd979b84ae4959a77a85090976137db" name="a9fd979b84ae4959a77a85090976137db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fd979b84ae4959a77a85090976137db">&#9670;&#160;</a></span>getView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 Camera::getView </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>pobranie matrycy view </p>
+<dl class="section return"><dt>Zwraca</dt><dd>matryca view </dd></dl>
+
+</div>
+</div>
+<a id="aefce80dca9a64902784298e8d4fb8f23" name="aefce80dca9a64902784298e8d4fb8f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefce80dca9a64902784298e8d4fb8f23">&#9670;&#160;</a></span>HorizontalMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::HorizontalMove </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isRight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cameraSpeed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja ruchu horyzontalneog. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">isRight</td><td>czy w prawo </td></tr>
+    <tr><td class="paramname">cameraSpeed</td><td>prędkość kamery </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad7da7f68dd607a72e463549132437ad5" name="ad7da7f68dd607a72e463549132437ad5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7da7f68dd607a72e463549132437ad5">&#9670;&#160;</a></span>setCameraPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::setCameraPos </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ustawienie pozycji kamery </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>wektor pozycji kamery </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af382ecc8bc0b8064b8c5a525f592fcc4" name="af382ecc8bc0b8064b8c5a525f592fcc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af382ecc8bc0b8064b8c5a525f592fcc4">&#9670;&#160;</a></span>UpdateCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::UpdateCamera </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>programShader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>programShader2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aktualizuje pozycje kamery. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">programShader</td><td>id shadera 1 </td></tr>
+    <tr><td class="paramname">programShader2</td><td>id shadera 2 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1413c0ad72a928f540702737dfcefd44" name="a1413c0ad72a928f540702737dfcefd44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1413c0ad72a928f540702737dfcefd44">&#9670;&#160;</a></span>UpdateMouse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::UpdateMouse </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xpos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ypos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aktualizacja pozycji myszy. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xpos</td><td>pozycja x kamery </td></tr>
+    <tr><td class="paramname">ypos</td><td>pozycja y kamery </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8d4bed6c09bbae34e8634a7f65401fc1" name="a8d4bed6c09bbae34e8634a7f65401fc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d4bed6c09bbae34e8634a7f65401fc1">&#9670;&#160;</a></span>VerticalMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::VerticalMove </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isUp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cameraSpeed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja ruchu wertykalnego. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">isUp</td><td>czy kamera w górę </td></tr>
+    <tr><td class="paramname">cameraSpeed</td><td>prędkość kamery </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<li><a class="el" href="_camera_8h_source.html">Camera.h</a></li>
+<li>Camera.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

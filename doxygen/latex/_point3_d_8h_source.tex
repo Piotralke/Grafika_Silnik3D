@@ -1,0 +1,49 @@
+\hypertarget{_point3_d_8h_source}{}\doxysection{Point3\+D.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef point3d\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define point3d\_h}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}glad/glad.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}glm/glm.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_point3_d}{Point3D}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14 \textcolor{keyword}{private}:}
+\DoxyCodeLine{19     \textcolor{keywordtype}{float} vertices[3];}
+\DoxyCodeLine{20     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} VAO, VBO;}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_point3_d_a2ec7da050a255d631233a892c1d5d99d}{Point3D}}(\textcolor{keywordtype}{float} vertices[])}
+\DoxyCodeLine{28     \{}
+\DoxyCodeLine{29         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 3; i++)}
+\DoxyCodeLine{30         \{}
+\DoxyCodeLine{31             this-\/>vertices[i] = vertices[i];}
+\DoxyCodeLine{32         \}}
+\DoxyCodeLine{33         glGenVertexArrays(1, \&VAO);}
+\DoxyCodeLine{34         glGenBuffers(1, \&VBO);}
+\DoxyCodeLine{35         glBindVertexArray(VAO);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         glBindBuffer(GL\_ARRAY\_BUFFER, VBO);}
+\DoxyCodeLine{38         glBufferData(GL\_ARRAY\_BUFFER, \textcolor{keyword}{sizeof}(this-\/>vertices), this-\/>vertices, GL\_STATIC\_DRAW);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         glVertexAttribPointer(0, 3, GL\_FLOAT, GL\_FALSE, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{41         glEnableVertexAttribArray(0);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         glBindBuffer(GL\_ARRAY\_BUFFER, 0);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         glBindVertexArray(0);}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{52     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_point3_d_a7f0dd2ed896a8d081232e11ce6d0ab60}{getX}}();}
+\DoxyCodeLine{58     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_point3_d_a7282c6b4c314622d37424d19fddeef53}{getY}}();}
+\DoxyCodeLine{64     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_point3_d_abe4d040aab071fe4d0b5d13c1421fbf0}{getZ}}();}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_point3_d_ab4eeac67f15d8c07d508d4fa76b010b2}{setX}}(\textcolor{keywordtype}{float} x);}
+\DoxyCodeLine{76     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_point3_d_ac86480c69b4a32574f1339cea148f52e}{setY}}(\textcolor{keywordtype}{float} y);}
+\DoxyCodeLine{82     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_point3_d_aaefb320d17d263355e784cc4ec5912a9}{setZ}}(\textcolor{keywordtype}{float} z);}
+\DoxyCodeLine{88     glm::vec3 \mbox{\hyperlink{class_point3_d_a95ac90e652b64526623809ce201d4170}{getVec}}();}
+\DoxyCodeLine{94     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_point3_d_aba1db39e06c0297054a1cd8abbbee547}{setVec}}(glm::vec3 vec);}
+\DoxyCodeLine{99     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_point3_d_a5a2d3dce9011acd7101a43fa76e7173a}{draw}}();}
+\DoxyCodeLine{100 \};}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !point3d\_h}}
+
+\end{DoxyCode}

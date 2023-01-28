@@ -6,13 +6,36 @@
 #include <vector>
 #include <iterator>
 #include <iostream>
+
+/**
+ * @brief Klasa reprezentująca TriangleStrip
+ * 
+ */
 class TriangleStrip
 {
 private:
+	/**
+	 * @brief wektor verticies
+	 * 
+	 */
 	std::vector<float> vertices;
+	/**
+	 * @brief VBO,VAO,EBO
+	 * 
+	 */
 	unsigned int VBO, VAO, EBO;
+	/**
+	 * @brief ilość danych
+	 * 
+	 */
 	int n;
 public:
+/**
+ * @brief Konstruktor klasy trangle strip
+ * 
+ * @param vertices tablica vertices
+ * @param size rozmiar
+ */
 	TriangleStrip(float vertices[],int size)
 	{
 		n = size;
@@ -48,8 +71,22 @@ public:
 		glBindVertexArray(0);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}
+	/**
+	 * @brief Funkcja rysująca trójkąt
+	 * 
+	 */
 	void draw();
+	/**
+	 * @brief Ustawia tablicę wspolrzednych
+	 * 
+	 * @param vertices tablica vertices
+	 */
 	void setVertices(float vertices[]);
+	/**
+	 * @brief Pobiera tablicę wspolrzednych
+	 * 
+	 * @return tablica vertices
+	 */
 	float* getVertices();
 };
 #endif // !trianglefan_h

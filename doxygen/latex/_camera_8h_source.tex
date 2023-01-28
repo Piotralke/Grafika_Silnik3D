@@ -1,0 +1,54 @@
+\hypertarget{_camera_8h_source}{}\doxysection{Camera.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef camera\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define camera\_h}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}glm/gtc/matrix\_transform.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_camera}{Camera}} \{}
+\DoxyCodeLine{12 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17     glm::vec3 cameraPos;}
+\DoxyCodeLine{22     glm::vec3 cameraFront;}
+\DoxyCodeLine{27     glm::vec3 cameraUp;}
+\DoxyCodeLine{32     glm::mat4 model; }
+\DoxyCodeLine{37     glm::mat4 view; }
+\DoxyCodeLine{42     glm::mat4 projection;}
+\DoxyCodeLine{47     \textcolor{keywordtype}{bool} firstMouse;}
+\DoxyCodeLine{52     \textcolor{keywordtype}{float} lastX;}
+\DoxyCodeLine{57     \textcolor{keywordtype}{float} lastY;}
+\DoxyCodeLine{62     \textcolor{keywordtype}{float} pitch;}
+\DoxyCodeLine{67     \textcolor{keywordtype}{float} yaw;}
+\DoxyCodeLine{68 \textcolor{keyword}{public}:}
+\DoxyCodeLine{73     \mbox{\hyperlink{class_camera_a01f94c3543f56ede7af49dc778f19331}{Camera}}();}
+\DoxyCodeLine{83     \mbox{\hyperlink{class_camera_a54d124b3a5b6edf11ab099422a5d5eb3}{Camera}}(\textcolor{keywordtype}{float} screenWidth, \textcolor{keywordtype}{float} screenHeight, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} programShader, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} programShader2, GLFWwindow* window)}
+\DoxyCodeLine{84     \{}
+\DoxyCodeLine{85         cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);}
+\DoxyCodeLine{86         cameraFront = glm::vec3(0.0f, 0.0f, -\/1.0f);}
+\DoxyCodeLine{87         cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);}
+\DoxyCodeLine{88         projection = glm::perspective(glm::radians(45.0f), (\textcolor{keywordtype}{float})screenWidth / (\textcolor{keywordtype}{float})screenHeight, 0.1f, 100.0f);}
+\DoxyCodeLine{89         glUseProgram(programShader);}
+\DoxyCodeLine{90         glUniformMatrix4fv(glGetUniformLocation(programShader, \textcolor{stringliteral}{"{}projection"{}}), 1, GL\_FALSE, \&projection[0][0]);}
+\DoxyCodeLine{91         glUseProgram(programShader2);}
+\DoxyCodeLine{92         glUniformMatrix4fv(glGetUniformLocation(programShader2, \textcolor{stringliteral}{"{}projection"{}}), 1, GL\_FALSE, \&projection[0][0]);}
+\DoxyCodeLine{93         \textcolor{comment}{//glfwMakeContextCurrent(window);}}
+\DoxyCodeLine{94         firstMouse = \textcolor{keyword}{true};}
+\DoxyCodeLine{95         lastX = screenWidth / 2;}
+\DoxyCodeLine{96         lastY = screenHeight / 2;}
+\DoxyCodeLine{97         pitch = 0.0f;}
+\DoxyCodeLine{98         yaw = -\/90.0f;}
+\DoxyCodeLine{99     \}}
+\DoxyCodeLine{106     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_camera_af382ecc8bc0b8064b8c5a525f592fcc4}{UpdateCamera}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} programShader, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} programShader2);}
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_camera_a8d4bed6c09bbae34e8634a7f65401fc1}{VerticalMove}}(\textcolor{keywordtype}{bool} isUp, \textcolor{keywordtype}{float} cameraSpeed);}
+\DoxyCodeLine{120     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_camera_aefce80dca9a64902784298e8d4fb8f23}{HorizontalMove}}(\textcolor{keywordtype}{bool} isRight, \textcolor{keywordtype}{float} cameraSpeed);}
+\DoxyCodeLine{127     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_camera_a1413c0ad72a928f540702737dfcefd44}{UpdateMouse}}(\textcolor{keywordtype}{double} xpos, \textcolor{keywordtype}{double} ypos);}
+\DoxyCodeLine{133     glm::mat4 \mbox{\hyperlink{class_camera_a9fd979b84ae4959a77a85090976137db}{getView}}();}
+\DoxyCodeLine{139     glm::vec3 \mbox{\hyperlink{class_camera_ab6d97c213564d2523f1c10a4c366ed18}{getCameraFront}}();}
+\DoxyCodeLine{145     glm::vec3 \mbox{\hyperlink{class_camera_a3d4b941b2a2017866638391f0b732399}{getCameraPos}}();}
+\DoxyCodeLine{151     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_camera_ad7da7f68dd607a72e463549132437ad5}{setCameraPos}}(glm::vec3 pos);}
+\DoxyCodeLine{152 \};}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !camera\_h}}
+
+\end{DoxyCode}

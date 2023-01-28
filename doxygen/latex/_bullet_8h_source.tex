@@ -1,0 +1,27 @@
+\hypertarget{_bullet_8h_source}{}\doxysection{Bullet.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef bullet\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define bullet\_h}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Cube.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_bullet}{Bullet}}: \textcolor{keyword}{public} \mbox{\hyperlink{class_cube}{Cube}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12 \textcolor{keyword}{private}: }
+\DoxyCodeLine{13     }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_bullet_a910676186f4dd60227538f0f316f1a2e}{Bullet}}(glm::vec3 point, glm::vec3 color,glm::vec3 \mbox{\hyperlink{class_bullet_a872b90ed947585eeb8fa6f2dd6956518}{translation}}):\mbox{\hyperlink{class_cube}{Cube}}(point,color)}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24         this-\/>\mbox{\hyperlink{class_cube_a2d76646a30bea28a5f932b4231bac416}{scale}}(0.1);}
+\DoxyCodeLine{25         this-\/>translation = \mbox{\hyperlink{class_bullet_a872b90ed947585eeb8fa6f2dd6956518}{translation}};}
+\DoxyCodeLine{26     \}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bullet_aba6eb0fcc95f798f05cbae139d89662d}{move}}(\textcolor{keywordtype}{float} deltaTime);}
+\DoxyCodeLine{37     glm::vec3 \mbox{\hyperlink{class_bullet_a872b90ed947585eeb8fa6f2dd6956518}{translation}};}
+\DoxyCodeLine{38 \};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !bullet\_h}}
+
+\end{DoxyCode}

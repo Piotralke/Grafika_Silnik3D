@@ -6,10 +6,23 @@
 #include <iostream>
 #include "stb_image.h"
 
-
+/**
+ * @brief Klasa odpowiadająca za obsługę bitmap
+ * 
+ */
 class BitmapHandler {
 public:
+/**
+ * @brief Konstruktor obiektu BitmapHandler
+ * 
+ */
 	BitmapHandler(){}
+	/**
+	 * @brief Funkcja, która ładuje teksture i zwraca jej id
+	 * 
+	 * @param path Ścieżka do pliku
+	 * @return unsigned int id textury
+	 */
 	unsigned int loadTexture(char const* path);
 };
 
