@@ -168,7 +168,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resources\textures\aim.jpg" />
-    <Image Include="..\resources\textures\awesomeface.png" />
     <Image Include="..\resources\textures\container.jpg" />
     <Image Include="..\resources\textures\dpych.jpg" />
     <Image Include="..\resources\textures\essa.jpg" />
