@@ -1,5 +1,5 @@
 #include "engine.h"
-
+namespace sf = std::filesystem;
 Engine* Engine::instance = NULL;
 void Engine::init()
 {
@@ -19,7 +19,7 @@ void Engine::processInput()
 		isFullscreen(true);
 	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
 		isFullscreen(false);
-	float cameraSpeed = static_cast<float>(2.5 * deltaTime);
+	float cameraSpeed = static_cast<float>(6.0 * deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		camera->VerticalMove(true, cameraSpeed);
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -105,50 +105,101 @@ void Engine::mainLoop()
 	glm::vec3 pos(1.5f, 2.0f, -1.0f);
 	glm::vec3 pos2(0.0f, 2.0f, -1.0f);
 	glm::vec3 pos3(-1.5f, 2.0f, -1.0f);
-	glm::vec3 pos4(-1.5f, -20.0f, -1.0f);
-	glm::vec3 pos5(-1.5f, 10.0f, -30.0f);
+	glm::vec3 pos4(-1.5f, -20.0f, 0.0f); //bottom
+	glm::vec3 pos9(-1.5f, 30.0f, -1.0f); //top
+	glm::vec3 pos5(-1.5f, 10.0f, -30.0f); //front
+	glm::vec3 pos6(-1.5f, 10.0f, 30.0f); //back
+	glm::vec3 pos7(-30.0f, 10.0f, 0.0f); //left
+	glm::vec3 pos8(27.0f, 10.0f, 0.0f); //right
 	Cube aim(pos, red);
+	Cube hitbox(pos, red);
     Point3D point(vertices2);
     Triangle triangle(vertices);
 	Rectangle rectangle(vertices3);
     Line line(vertices4);
     TriangleStrip triangleStrip(vertices5,sizeof(vertices5)/sizeof(float));
 	Cube wall(pos5,darkGray);
+	Cube wallBack(pos6,darkGray);
+	Cube wallLeft(pos7,darkGray);
+	Cube wallRight(pos8,darkGray);
+	Cube wallTop(pos9,darkGray);
 	Cube asd(pos4, gray);
 	asd.scale(30.0);
 	wall.scale(30.0);
+	wallBack.scale(30.0);
+	wallLeft.scale(30.0);
+	wallRight.scale(30.0);
+	wallTop.scale(30.0);
 	cubesVector.push_back(asd);
 	aim.scale(0.002);
 	cubesVector.push_back(wall);
+	cubesVector.push_back(wallBack);
+	cubesVector.push_back(wallLeft);
+	cubesVector.push_back(wallRight);
+	cubesVector.push_back(wallTop);
 	float respawnTimer = 1.2f;
 	float time = 0.0f;
+	std::string parentDir = (sf::current_path().sf::path::parent_path()).string();
+	std::string texPath = "\\resources\\textures\\container.jpg";
+	unsigned int diffuseMap = bitmapHandler->loadTexture((parentDir+texPath).c_str());
+
+	std::string texPathWall = "\\resources\\textures\\wall.jpg";
+	unsigned int diffuseMap2 = bitmapHandler->loadTexture((parentDir + texPathWall).c_str());
+
+	std::string texPathWall2 = "\\resources\\textures\\floor.jpg";
+	unsigned int floor = bitmapHandler->loadTexture((parentDir + texPathWall2).c_str());
+
+	std::string texPathWall3 = "\\resources\\textures\\aim.jpg";
+	unsigned int aimT = bitmapHandler->loadTexture((parentDir + texPathWall3).c_str());
+
+	glEnable(GL_TEXTURE_2D);
+	glUseProgram(programShader2);
+	glUniform1i(glGetUniformLocation(programShader2, "material.diffuse"), 0);
     while (!glfwWindowShouldClose(getWindow()))
     {
+		glUseProgram(programShader);
 		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
         processInput();
         glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glUseProgram(programShader);
+         
+        glUseProgram(programShader2); 
+		glUniform3f(glGetUniformLocation(programShader2, "light.position"), 0, 10, 0);
+		glUniform3f(glGetUniformLocation(programShader2, "viewPos"), camera->getCameraPos().x, camera->getCameraPos().y,camera->getCameraPos().z);
+		glUniform3f(glGetUniformLocation(programShader2, "light.ambient"), 0.2f, 0.2f, 0.2f);
+		glUniform3f(glGetUniformLocation(programShader2, "light.diffuse"), 0.5f, 0.5f, 0.5f);
+		glUniform3f(glGetUniformLocation(programShader2, "light.specular"), 1.0f, 1.0f, 1.0f);
+		glUniform3f(glGetUniformLocation(programShader2, "material.specular"), 0.5f, 0.5f, 0.5f);
+		glUniform1f(glGetUniformLocation(programShader2, "material.shininess"), 64.0f);
+
+		glUseProgram(programShader);
 		time += deltaTime;
 		if (time>=respawnTimer)
 		{
 			generateCube();
 			time = time - respawnTimer;
 		}
-		
+		glActiveTexture(GL_TEXTURE0);
+		//;
 
 		aim.setPosition(camera->getCameraPos()+camera->getCameraFront());
-		aim.draw(programShader);
-		camera->UpdateCamera(programShader);
+		hitbox.setPosition(camera->getCameraPos());
+		aim.draw(programShader, aimT,2);
+		camera->UpdateCamera(programShader,programShader2);
+
 		for (int i = 0; i < cubesVector.size(); i++)
 		{
-			cubesVector[i].draw(programShader);
+			if (checkCollision(cubesVector[i], hitbox))
+			{
+				camera->setCameraPos(glm::vec3(0, 0, 0));
+			}
+			cubesVector[i].draw(programShader, diffuseMap2,2);
 		}
 		for (int i = 0; i < targetVector.size(); i++)
 		{
-			targetVector[i].draw(programShader);
+			targetVector[i].draw(programShader, floor,1);
 		}
 		for (int i = 0; i < bulletsVector.size(); i++)
 		{
@@ -157,12 +208,12 @@ void Engine::mainLoop()
 			bulletsVector[i].rotateZ(0.5);
 			bulletsVector[i].rotateX(0.5);
 			bulletsVector[i].rotateY(0.5);
-			bulletsVector[i].draw(programShader);
+			bulletsVector[i].draw(programShader,aimT,1);
 			for (int j = 0; j < cubesVector.size(); j++)
 			{
 				if (checkCollision(cubesVector[j], bulletsVector[i]))
 				{
-					std::cout << "X: " << bulletsVector[i].getPosition().x << " Y: " << bulletsVector[i].getPosition().y << " Z: " << bulletsVector[i].getPosition().z << std::endl;
+					//std::cout << "X: " << bulletsVector[i].getPosition().x << " Y: " << bulletsVector[i].getPosition().y << " Z: " << bulletsVector[i].getPosition().z << std::endl;
 					bulletsVector.erase(bulletsVector.begin() + i);
 					deleted = true;
 					break;

@@ -1,5 +1,5 @@
 #include "Cube.h"
-void Cube::draw(unsigned int programShader)
+void Cube::draw(unsigned int programShader,unsigned int texture,int textureNum)
 {
 	glUseProgram(programShader);
 	glm::mat4 model = glm::mat4(1.0f);
@@ -9,6 +9,7 @@ void Cube::draw(unsigned int programShader)
 	model = glm::rotate(model, rotationAngleZ, glm::vec3(0.0, 0.0, 1.0));
 	model = glm::scale(model, scalingFactor);
     glUniformMatrix4fv(glGetUniformLocation(programShader, "model"), 1, GL_FALSE, &model[0][0]);
+	glBindTexture(GL_TEXTURE_2D, texture);
 	glBindVertexArray(this->VAO);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }

@@ -1,10 +1,12 @@
 #include "Camera.h"
-void Camera::UpdateCamera(unsigned int programShader)
+void Camera::UpdateCamera(unsigned int programShader, unsigned int programShader2)
 {
     glUseProgram(programShader);
     view = glm::mat4(1.0f);
     view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
     glUniformMatrix4fv(glGetUniformLocation(programShader, "view"), 1, GL_FALSE, &view[0][0]);
+	glUseProgram(programShader);
+	glUniformMatrix4fv(glGetUniformLocation(programShader2, "view"), 1, GL_FALSE, &view[0][0]);
 
 }
 void Camera::VerticalMove(bool isUp, float cameraSpeed)
@@ -70,4 +72,8 @@ glm::vec3 Camera::getCameraFront()
 glm::vec3 Camera::getCameraPos()
 {
 	return cameraPos;
+}
+void Camera::setCameraPos(glm::vec3 pos)
+{
+	cameraPos = pos;
 }
