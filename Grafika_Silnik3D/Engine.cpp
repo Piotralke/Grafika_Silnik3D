@@ -157,7 +157,7 @@ void Engine::mainLoop()
 	glUniform1i(glGetUniformLocation(programShader2, "material.diffuse"), 0);
     while (!glfwWindowShouldClose(getWindow()))
     {
-		glUseProgram(programShader);
+		glUseProgram(programShader2);
 		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
@@ -174,7 +174,7 @@ void Engine::mainLoop()
 		glUniform3f(glGetUniformLocation(programShader2, "material.specular"), 0.5f, 0.5f, 0.5f);
 		glUniform1f(glGetUniformLocation(programShader2, "material.shininess"), 64.0f);
 
-		glUseProgram(programShader);
+		glUseProgram(programShader2);
 		time += deltaTime;
 		if (time>=respawnTimer)
 		{
@@ -186,8 +186,8 @@ void Engine::mainLoop()
 
 		aim.setPosition(camera->getCameraPos()+camera->getCameraFront());
 		hitbox.setPosition(camera->getCameraPos());
-		aim.draw(programShader, aimT,2);
-		camera->UpdateCamera(programShader,programShader2);
+		aim.draw(programShader2, aimT,2);
+		camera->UpdateCamera(programShader2,programShader2);
 
 		for (int i = 0; i < cubesVector.size(); i++)
 		{
@@ -195,11 +195,11 @@ void Engine::mainLoop()
 			{
 				camera->setCameraPos(glm::vec3(0, 0, 0));
 			}
-			cubesVector[i].draw(programShader, diffuseMap2,2);
+			cubesVector[i].draw(programShader2, diffuseMap2,2);
 		}
 		for (int i = 0; i < targetVector.size(); i++)
 		{
-			targetVector[i].draw(programShader, floor,1);
+			targetVector[i].draw(programShader2, floor,1);
 		}
 		for (int i = 0; i < bulletsVector.size(); i++)
 		{
@@ -208,7 +208,7 @@ void Engine::mainLoop()
 			bulletsVector[i].rotateZ(0.5);
 			bulletsVector[i].rotateX(0.5);
 			bulletsVector[i].rotateY(0.5);
-			bulletsVector[i].draw(programShader,aimT,1);
+			bulletsVector[i].draw(programShader2,aimT,1);
 			for (int j = 0; j < cubesVector.size(); j++)
 			{
 				if (checkCollision(cubesVector[j], bulletsVector[i]))
@@ -238,7 +238,7 @@ void Engine::mainLoop()
     }
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
-    glDeleteProgram(programShader);
+    glDeleteProgram(programShader2);
     glfwTerminate();
 }
 

@@ -56,8 +56,8 @@ private:
 
 	const char* vertexLightningShaderSource = "#version 330 core\n"
 		"layout(location = 0) in vec3 aPos;"
-		"layout(location = 1) in vec2 aTexCoords;\n"
-		"layout(location = 2) in vec3 aNormal;\n"
+		"layout(location = 1) in vec3 aNormal;\n"
+		"layout(location = 2) in vec2 aTexCoords;\n"
 		"out vec3 FragPos;\n"
 		"out vec2 TexCoords;\n"
 		"out vec3 Normal;\n"
@@ -110,7 +110,6 @@ private:
 
 		unsigned int vertexShader;
 		unsigned int fragmentShader;
-		unsigned int programShader;
 		unsigned int programShader2;
 		unsigned int VBO, VAO;
 		unsigned int vertexLightningShader;
@@ -174,22 +173,13 @@ public:
 			std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
 		}
 
-		programShader = glCreateProgram();
-		glAttachShader(programShader, vertexShader);
-		glAttachShader(programShader, fragmentShader);
-		glLinkProgram(programShader);
-		glGetProgramiv(programShader, GL_LINK_STATUS, &success);
-		if (!success) {
-			glGetProgramInfoLog(programShader, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
-		}
 		programShader2 = glCreateProgram();
 		glAttachShader(programShader2, vertexLightningShader);
 		glAttachShader(programShader2, fragmentLightningShader);
 		glLinkProgram(programShader2);
 		glGetProgramiv(programShader2, GL_LINK_STATUS, &success);
 		if (!success) {
-			glGetProgramInfoLog(programShader, 512, NULL, infoLog);
+			glGetProgramInfoLog(programShader2, 512, NULL, infoLog);
 			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
 		}
 		glDeleteShader(vertexShader);
@@ -203,7 +193,7 @@ public:
      	this->screenHeight = height;
 		this->screenWidth = width;
 		this->monitor = monitor;
-		camera = new Camera(width, height,programShader,programShader2, window);
+		camera = new Camera(width, height,programShader2,programShader2, window);
 		glfwSetMouseButtonCallback(window, MouseButtonCallback);
 		glfwSetCursorPosCallback(window, MouseCallback);
 		
